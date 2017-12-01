@@ -14,6 +14,6 @@ Rails.application.routes.draw do
   get 'calendars/index'
 
   devise_for :users
-  root to: "calendar#index"
+  root to: "calendars#index"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
