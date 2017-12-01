@@ -13,3 +13,10 @@
  *= require_tree .
  *= require_self
  */
+
+.cal-day{
+  display: inline-block;
+  height: 100px;
+  width: 100px;
+  border: 1px solid black;
+}
