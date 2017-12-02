@@ -1,3 +1,12 @@
+/* Color palette:
+
+dusty: #96858F
+lavendar: #6D7993
+overcast: #9099A2
+paper: #D5D5D5
+
+*/
+
 * {
   font-family: 'Barlow Condensed', sans-serif;
 
@@ -12,6 +21,7 @@ a:hover {
 }
 
 .simple-calendar {
+
 }
 
 .calendar-heading {
@@ -22,17 +32,24 @@ a:hover {
   display: inline-block;
   height: 100px;
   width: 100px;
-  border: 1px solid black;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
   margin: 0 auto;
   transition: background-color 1s;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 90px;
+  font-size: 50px;
+  color: #D5D5D5;
 }
 
 .cal-day:hover {
-  background-color: white;
+  background-color: #6D7993;
   text-decoration: underline;
 }
 
 .table {
-  background-color: #D5D5D5;
+  background-color: #96858F;
+  font-size: 20px;
 
 }
