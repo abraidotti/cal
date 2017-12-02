@@ -3,6 +3,9 @@
 
 }
 
+.simple-calendar {
+}
+
 .calendar-heading {
   font-size: 20px;
 }
@@ -13,4 +16,15 @@
   width: 100px;
   border: 1px solid black;
   margin: 0 auto;
+  transition: border-radius 1s, background-color 1s;
+}
+
+.cal-day:hover {
+  border-radius: 6px;
+  background-color: white;
+}
+
+.table {
+  background-color: #D5D5D5;
+
 }
