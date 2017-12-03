@@ -16,15 +16,18 @@ a {
 }
 
 a:hover {
-  background-color: #77C9D4;
+  background-color: #666666;
 }
 
 .navbar {
-  padding: 10px;
+  padding: 5px;
   display: grid;
   grid-template-columns: 0fr 1fr;
-  background-color: white;
   width: 100vw;
+}
+
+.navlinks {
+  padding: 5px;
 }
 
 .simple-calendar {}
