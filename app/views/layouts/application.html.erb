@@ -10,10 +10,11 @@
 
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-  <img src="/Users/devinhart/class-projects/cal/app/assets/images/logo_black.png" alt="">
 
   <nav class="navbar">
-    <%= image_tag("logo_black.png", :alt => "logo") %>
+    <%= image_tag("logo_small_black.png", :alt => "logo") %>
+
+    <br>
     <% if user_signed_in? %>
         Logged in as: <%= current_user.email %>
 
