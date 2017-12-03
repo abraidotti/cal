@@ -1,15 +1,11 @@
 /* Color palette:
 
-dusty: #96858F
-lavendar: #6D7993
-overcast: #9099A2
-paper: #D5D5D5
+
 
 */
 
 * {
-  font-family: 'Barlow Condensed', sans-serif;
-
+  font-family: 'Open Sans Condensed', sans-serif;
 }
 
 a {
@@ -20,15 +16,16 @@ a:hover {
   text-decoration: underline;
 }
 
-.simple-calendar {
-
+.navbar {
 }
+
+.simple-calendar {}
 
 .calendar-heading {
   font-size: 20px;
 }
 
-.cal-day{
+.cal-day {
   display: inline-block;
   height: 100px;
   width: 100px;
@@ -44,12 +41,11 @@ a:hover {
 }
 
 .cal-day:hover {
-  background-color: #6D7993;
+  background-color: #A5A5AF;
   text-decoration: underline;
 }
 
 .table {
-  background-color: #96858F;
+  background-color: #666666;
   font-size: 20px;
-
 }
