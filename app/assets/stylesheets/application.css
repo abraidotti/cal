@@ -12,7 +12,9 @@
  *
  *= require_tree .
  *= require_self
+ = require leaflet
  */
+
 
 .cal-day{
   display: inline-block;
