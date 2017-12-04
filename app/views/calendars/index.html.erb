@@ -4,14 +4,14 @@
 
   <%= month_calendar events: @events do |date, events| %>
   <% if @time1.day == date.day && !events.empty? %>
-      <div class="cal-day current-day has_events"><%= link_to date.day, events_path(events) %>
+      <div class="cal-day current-day has_events"><%= link_to date.day, calendars_show_path(date) %>
       </div>
 
   <% elsif @time1.day == date.day && events.empty? %>
     <div class="cal-day current-day"><%= date.day %> </div>
 
   <% elsif @time1.day != date.day && !events.empty? %>
-      <div class="cal-day has_events"><%= link_to date.day, events_path(date) %>
+      <div class="cal-day has_events"><%= link_to date.day, calendars_show_path(date) %>
       </div>
 
   <% else %>
