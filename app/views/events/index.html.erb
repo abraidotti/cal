@@ -9,3 +9,26 @@
 </ul>
 
 <%= link_to "New event", new_event_path %>
+
+<h4>Today's Events:</h4>
+
+<%= week_calendar events: @events, attribute: :start_time, end_attribute: :end_time do |date, events| %>
+<div><%= date.day %></div>
+<div>Events:</div>
+  <% events.each do |event| %>
+  <div><%= link_to event.name, event_path(event) %></div>
+  <%= params%>
+    <% end %>
+<% end %>
+
+
+<%= calendar number_of_days: 2 do |date| %>
+  <%= date %>
+  <% @events.each do |event| %>
+  <% if event.start_time.day == date.day || event.end_time.day == date.day %>
+  <div><%= event.name %></div>
+  <% else %>
+  <p></p>
+  <% end %>
+    <% end %>
+<% end %>
