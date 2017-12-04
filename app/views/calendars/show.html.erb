@@ -1,0 +1,9 @@
+<h4>Today's Events:</h4>
+
+<%= month_calendar events: @events do |date, meetings| %>
+  <% meetings.each do |meeting| %>
+    <div>
+      <%= meeting.name %>
+    </div>
+  <% end %>
+<% end %>
