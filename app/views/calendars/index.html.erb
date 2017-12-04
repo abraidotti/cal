@@ -2,7 +2,7 @@
 
 <% @time1 = Time.new %>
 
-<%= month_calendar do |date| %>
+<%= month_calendar(attribute: :starts_at) do |date| %>
   <% if @time1.day == date.day%>
   <div class="cal-day current-day"><%= date.day %></div>
   <% else %>
