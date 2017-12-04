@@ -2,10 +2,18 @@
 
 <% @time1 = Time.new %>
 
-<%= month_calendar(attribute: :starts_at) do |date| %>
+  <%= month_calendar events: @events do |date, events| %>
   <% if @time1.day == date.day%>
-  <div class="cal-day current-day"><%= date.day %></div>
+    <div class="cal-day current-day"><%= date.day %>
+    <% events.each do |event| %>
+      <%= tag.div class: %w( has_events ) %>
+      </div>
+    <% end %>
   <% else %>
-  <div class="cal-day"><%= date.day %></div>
+    <div class="cal-day"><%= date.day %>
+    <% events.each do |event| %>
+      <%= tag.div class: %w( has_events ) %>
+      </div>
+    <% end %>
   <% end %>
 <% end %>
