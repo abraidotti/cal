@@ -1,6 +1,11 @@
 <h1>Calendars#index</h1>
 
+<% @time1 = Time.new %>
 
 <%= month_calendar do |date| %>
+  <% if @time1.day == date.day%>
+  <div class="cal-day current-day"><%= date.day %></div>
+  <% else %>
   <div class="cal-day"><%= date.day %></div>
+  <% end %>
 <% end %>

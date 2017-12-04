@@ -60,3 +60,7 @@ a:hover {
   background-color: #666666;
   font-size: 20px;
 }
+
+.current-day {
+  background-color: #A5A5AF; 
+}
