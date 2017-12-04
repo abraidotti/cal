@@ -62,5 +62,9 @@ a:hover {
 }
 
 .current-day {
-  background-color: #A5A5AF; 
+  border: 1px solid white;
+}
+
+.has_events {
+  background-color: lightsalmon;
 }
