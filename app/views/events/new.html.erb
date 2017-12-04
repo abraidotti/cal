@@ -1,6 +1,6 @@
 <h1>Events#new</h1>
 
-<%= form_for @event do |f| %>
+<%= form_with(model: Event.new, local:true) do |f| %>
 <br>
 <%= f.label "Name: " %>
 <%= f.text_field :name %>

@@ -16,7 +16,7 @@ class EventsController < ApplicationController
     if @event.save
       redirect_to root_path
     else
-      redirect_to new_event_path, notice: @event.errors.full_messages.last
+      redirect_to events_new_path, notice: @event.errors.full_messages.last
     end
   end
 
