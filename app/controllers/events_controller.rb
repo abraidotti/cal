@@ -3,6 +3,7 @@ class EventsController < ApplicationController
   before_action :event_params, except: [:index, :new]
 
   def show
+    @event = Event.find(params[:id])
   end
 
   def new
@@ -15,7 +16,7 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
         if @event.save
-          redirect_to root_path
+          redirect_to event_path
         else
           redirect_to new_event_path, notice: @event.errors.full_messages.map { |error| @event.error }
         end

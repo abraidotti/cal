@@ -35,6 +35,7 @@ gem 'jbuilder', '~> 2.5'
 gem "simple_calendar"
 gem 'devise'
 gem 'leaflet-rails'
+gem 'geocoder'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
