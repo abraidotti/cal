@@ -1,15 +1,5 @@
 Rails.application.routes.draw do
-  get 'events/show'
-
-  get 'events/new'
-
-  get 'events/edit'
-
-  get 'events/create'
-
-  get 'events/update'
-
-  get 'events/destroy'
+  resources :events
 
   get 'calendars/index'
 
