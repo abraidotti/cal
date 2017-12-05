@@ -1,3 +1,15 @@
+/*
+Color Palette:
+
+light blue: #77C9D4
+light green: #57BC90
+dark green: #015249
+light gray: #D5D5D5
+gray: #A5A5AF
+
+
+*/
+
 
 * {
   font-family: 'Open Sans Condensed', sans-serif;
@@ -49,7 +61,7 @@ a:hover {
   vertical-align: middle;
   line-height: 90px;
   font-size: 50px;
-  color: #D5D5D5;
+  color: #A5A5AF;
 }
 
 .cal-day:hover {
