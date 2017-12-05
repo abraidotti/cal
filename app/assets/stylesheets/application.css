@@ -99,3 +99,7 @@ a:hover {
   display: grid;
   grid-template-rows: 1fr 2fr 1fr;
 }
+
+.not-current-month{
+  background-color: lightgrey;
+}
