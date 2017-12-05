@@ -14,10 +14,10 @@
       <%= image_tag("logo_small_black.png", :alt => "logo") %>
     </div>
 
-    <% if user_signed_in? %>
 
     <div class="navlinks">
-      Logged in as:
+      <% if user_signed_in? %>
+      <p>Logged in as:<p>
       <%= current_user.email %>
         <br>
 
@@ -28,6 +28,8 @@
         <%= link_to "Back", "/" %>
         |
         <%= link_to "New Event", new_event_path %>
+        |
+        <%= link_to "All Events", events_path %>
       <% else %>
         <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link' %>
         |
