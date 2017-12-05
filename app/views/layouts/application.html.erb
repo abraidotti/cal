@@ -13,11 +13,11 @@
     <div>
       <%= image_tag("logo_small_black.png", :alt => "logo") %>
     </div>
-
-
+      Logged in as:
     <div class="navlinks">
       <% if user_signed_in? %>
       <p>Logged in as:<p>
+
       <%= current_user.email %>
         <br>
 
