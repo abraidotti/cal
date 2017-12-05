@@ -13,7 +13,6 @@
     <div>
       <%= image_tag("logo_small_black.png", :alt => "logo") %>
     </div>
-      Logged in as:
     <div class="navlinks">
       <% if user_signed_in? %>
       <p>Logged in as:<p>
@@ -25,7 +24,7 @@
         |
         <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link' %>
         |
-        <%= link_to "Back", "/" %>
+        <%= link_to "Calendar", "/" %>
         |
         <%= link_to "New Event", new_event_path %>
         |
