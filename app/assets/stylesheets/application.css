@@ -43,10 +43,14 @@ a:hover {
   padding: 5px;
 }
 
-.simple-calendar {}
+.simple-calendar {
+  display: grid;
+  margin: auto;
+}
 
 .calendar-heading {
   font-size: 20px;
+  margin: auto;
 }
 
 .cal-day {
@@ -71,6 +75,7 @@ a:hover {
 .table {
   background-color: white;
   font-size: 20px;
+  margin: auto;
 }
 
 .current-day {
@@ -79,4 +84,8 @@ a:hover {
 
 .has_events {
   background-color: #57BC90;
+}
+
+.cal-grid {
+  display: grid;
 }
