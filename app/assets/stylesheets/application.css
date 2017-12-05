@@ -89,3 +89,8 @@ a:hover {
 .cal-grid {
   display: grid;
 }
+
+.form-label {
+  display: grid;
+  grid-template-rows: 1fr;
+}
