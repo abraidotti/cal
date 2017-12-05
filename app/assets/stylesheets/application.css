@@ -1,3 +1,15 @@
+/*
+Color Palette:
+
+light blue: #77C9D4
+light green: #57BC90
+dark green: #015249
+light gray: #D5D5D5
+gray: #A5A5AF
+
+
+*/
+
 
 * {
   font-family: 'Open Sans Condensed', sans-serif;
@@ -13,10 +25,11 @@ html {
 
 a {
   text-decoration: none;
+  color: #015249;
 }
 
 a:hover {
-  background-color: #666666;
+  text-decoration: underline;
 }
 
 .navbar {
@@ -30,10 +43,14 @@ a:hover {
   padding: 5px;
 }
 
-.simple-calendar {}
+.simple-calendar {
+  display: grid;
+  margin: auto;
+}
 
 .calendar-heading {
   font-size: 20px;
+  margin: auto;
 }
 
 .cal-day {
@@ -48,17 +65,17 @@ a:hover {
   vertical-align: middle;
   line-height: 90px;
   font-size: 50px;
-  color: #D5D5D5;
+  color: #A5A5AF;
 }
 
 .cal-day:hover {
-  background-color: #A5A5AF;
-  text-decoration: underline;
+  background-color: #77C9D4;
 }
 
 .table {
-  background-color: #666666;
+  background-color: white;
   font-size: 20px;
+  margin: auto;
 }
 
 .current-day {
@@ -66,5 +83,14 @@ a:hover {
 }
 
 .has_events {
-  background-color: lightsalmon;
+  background-color: #57BC90;
+}
+
+.cal-grid {
+  display: grid;
+}
+
+.form-label {
+  display: grid;
+  grid-template-rows: 1fr;
 }
