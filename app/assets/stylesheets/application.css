@@ -103,3 +103,8 @@ a:hover {
 .not-current-month{
   background-color: lightgrey;
 }
+
+.new-event-box{
+  margin-left: 20px;
+  font-size: 1.2em;
+}
