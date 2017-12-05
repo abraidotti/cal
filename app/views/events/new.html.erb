@@ -2,19 +2,19 @@
 
 <%= form_with(model: Event.new, local:true) do |f| %>
 <br>
-<%= f.label "Name: " %>
+<%= f.label "Name: ", class: 'form-label' %>
 <%= f.text_field :name %>
 <br>
-<%= f.label "Description: " %>
+<%= f.label "Description: ", class: 'form-label' %>
 <%= f.text_field :description %>
 <br>
-<%= f.label "Location: " %>
+<%= f.label "Location: ", class: 'form-label' %>
 <%= f.select(:location, $locations) %>
 <br>
-<%= f.label "Start time" %>
+<%= f.label "Start time", class: 'form-label' %>
 <%= f.datetime_select :start_time %>
 <br>
-<%= f.label "End time" %>
+<%= f.label "End time", class: 'form-label' %>
 <%= f.datetime_select :end_time %>
 <br>
 <%= f.submit %>

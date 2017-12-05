@@ -11,10 +11,10 @@
     <div class="cal-day current-day"><%= date.day %> </div>
 
   <% elsif @time1.day != date.day && !events.empty? %>
-      <div class="cal-day has_events"><%= link_to date.day, events_path(events) %>
+      <div class="cal-day has_events"><%= link_to date.day, events_path(date.day.month) %>
       </div>
 
   <% else %>
-    <div class="cal-day"><%= date.day %>
+    <div class="cal-day"><%= date.day %></div>
   <% end %>
 <% end %>
