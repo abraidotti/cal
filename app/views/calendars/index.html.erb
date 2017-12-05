@@ -1,20 +1,30 @@
-<h1>Calendars#index</h1>
-
 <% @time1 = Time.new %>
+
 
   <%= month_calendar events: @events do |date, events| %>
   <% if @time1.day == date.day && !events.empty? %>
       <div class="cal-day current-day has_events"><%= link_to date.day, calendars_show_path(date) %>
-      </div>
 
   <% elsif @time1.day == date.day && events.empty? %>
     <div class="cal-day current-day"><%= date.day %> </div>
 
+
   <% elsif @time1.day != date.day && !events.empty? %>
+      <% if @time1.month != date.month %>
+      <div class="cal-day has_events not-current-month"><%= link_to date.day, calendars_show_path(date) %>
+      </div>
+      <% else %>
       <div class="cal-day has_events"><%= link_to date.day, calendars_show_path(date) %>
       </div>
+      <% end %>
+
 
   <% else %>
+  <% if @time1.month != date.month %>
+    <div class="cal-day not-current-month"><%= date.day %></div>
+  <% else %>
     <div class="cal-day"><%= date.day %></div>
+  <% end %>
+
   <% end %>
 <% end %>

@@ -14,6 +14,7 @@ class EventsController < ApplicationController
   end
 
   def edit
+    @event = Event.find_by_id(params[:id])
   end
 
   def create
@@ -28,9 +29,19 @@ class EventsController < ApplicationController
   end
 
   def update
+    @event = Event.find_by_id(params[:id])
+    if @event.update(event_params)
+      redirect_to @event
+    else
+      render 'edit'
+    end
   end
 
   def destroy
+    event = Event.find_by_id(params[:id])
+    event.destroy
+
+    redirect_to '/'
   end
 
   private
