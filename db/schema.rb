@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171205191937) do
+ActiveRecord::Schema.define(version: 20171205194519) do
 
   create_table "calendars", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -31,6 +31,20 @@ ActiveRecord::Schema.define(version: 20171205191937) do
     t.decimal "cost", precision: 10, scale: 2
   end
 
+  create_table "events_tripss", id: false, force: :cascade do |t|
+    t.integer "event_id", null: false
+    t.integer "tripss_id", null: false
+    t.index ["event_id", nil], name: "index_events_tripss_on_event_id_and_trip_id"
+    t.index [nil, "event_id"], name: "index_events_tripss_on_trip_id_and_event_id"
+  end
+
+  create_table "events_users", id: false, force: :cascade do |t|
+    t.integer "event_id", null: false
+    t.integer "user_id", null: false
+    t.index ["event_id", "user_id"], name: "index_events_users_on_event_id_and_user_id"
+    t.index ["user_id", "event_id"], name: "index_events_users_on_user_id_and_event_id"
+  end
+
   create_table "trips", force: :cascade do |t|
     t.string "name"
     t.string "description"
@@ -41,6 +55,13 @@ ActiveRecord::Schema.define(version: 20171205191937) do
     t.datetime "end_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "trips_users", id: false, force: :cascade do |t|
+    t.integer "trip_id", null: false
+    t.integer "user_id", null: false
+    t.index ["trip_id", "user_id"], name: "index_trips_users_on_trip_id_and_user_id"
+    t.index ["user_id", "trip_id"], name: "index_trips_users_on_user_id_and_trip_id"
   end
 
   create_table "users", force: :cascade do |t|
