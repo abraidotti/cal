@@ -33,3 +33,5 @@
   <%= f.hidden_field :event, :value => @event.id%>
   <%= f.submit "Assign"%>
   <% end %>
+
+<%= link_to 'Add this Event', edit_event_path(@event) %>
