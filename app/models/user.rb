@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   has_many :trips
-  has_many :events, though: :trips
+  has_many :events, through: :trips
   after_create :build_calendar
 
   def build_calendar
