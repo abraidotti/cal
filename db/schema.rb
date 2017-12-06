@@ -38,6 +38,13 @@ ActiveRecord::Schema.define(version: 20171206162038) do
     t.index ["trip_id"], name: "index_events_trips_on_trip_id"
   end
 
+  create_table "events_users", force: :cascade do |t|
+    t.integer "event_id"
+    t.integer "user_id"
+    t.index ["event_id"], name: "index_events_users_on_event_id"
+    t.index ["user_id"], name: "index_events_users_on_user_id"
+  end
+
   create_table "trips", force: :cascade do |t|
     t.string "name"
     t.string "description"
