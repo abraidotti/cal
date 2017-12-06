@@ -15,7 +15,7 @@ test_trip = Trip.create(name: "A night in Philly", description: "a nutritional g
 user = User.create(
   email: "fake@fake.com",
   fname: Faker::Ancient.primordial,
-  lname: Faker::Dog.sound,
+  lname: Faker::Food.spice,
   password: '123456',
   )
   3.times do
