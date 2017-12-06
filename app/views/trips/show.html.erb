@@ -1,0 +1,14 @@
+<h1>trips#show</h1>
+<p>Find me in app/views/trips/show.html.erb</p>
+
+<%= @trip.name %>
+<br>
+<%= @trip.description %>
+<br>
+
+<% if current_user.id == @trip.user_id %>
+<%= link_to 'Edit trip', edit_trip_path(@trip) %>
+<%= link_to 'Delete trip Forever', trip_path(@trip),
+        method: :delete,
+        data: { confirm: 'Are you sure?! No one else will be able to use your cool trip!' } %>
+<% end %>
