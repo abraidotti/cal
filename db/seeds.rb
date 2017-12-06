@@ -16,20 +16,8 @@ test_trip = Trip.create(name: "A night in Philly", description: "a nutritional g
     email: Faker::Internet.email,
     password: '123456',
     )
-    2.times do
-      Trip.create(
-        name: Faker::Coffee.blend_name,
-        description: Faker::RickAndMorty.quote,
-        location: "Philly",
-        start_time: Time.now,
-        end_time: Time.now,
-        duration: 4,
-        cost: 40,
-        user_id: user.id
-      )
-    end
     3.times do
-      user.trips << Event.create(
+      user.events << Event.create(
         name: Faker::Coffee.blend_name,
         description: Faker::Coffee.notes,
         location: Faker::Space.planet,
@@ -40,4 +28,16 @@ test_trip = Trip.create(name: "A night in Philly", description: "a nutritional g
         user_id: user.id
       )
     end
+    3.times do
+        user.trips << Trip.create(
+          name: Faker::Coffee.blend_name,
+          description: Faker::RickAndMorty.quote,
+          location: "Philly",
+          start_time: Time.now,
+          end_time: Time.now,
+          duration: 4,
+          cost: 40,
+          user_id: user.id
+        )
+      end
 end
