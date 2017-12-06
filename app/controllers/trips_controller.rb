@@ -36,6 +36,10 @@ class TripsController < ApplicationController
         @trip.events << Event.find(trip_event_params[:event_ids])
         @trip.save
         redirect_to trip_path(@trip)
+      elsif trip_event_params[:trip_ids]
+        @trip.events << Event.find(trip_event_params[:trip_ids])
+        @trip.save
+        redirect_to trip_path(@trip)
       else
         begin
           if @trip.update(trip_params)
@@ -75,7 +79,7 @@ class TripsController < ApplicationController
 
   private
   def trip_event_params
-    params.require(:trip).permit(:event_ids)
+    params.require(:trip).permit(:event_ids, :trip_ids)
   end
 
   def find_trip
