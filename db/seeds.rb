@@ -7,13 +7,15 @@ require 'faker'
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-test_user = User.create(email: "test@test.com", password: "123456")
+test_user = User.create(email: "test@test.com", fname: "Testy", lname: "Testaverde", password: "123456")
 
 test_trip = Trip.create(name: "A night in Philly", description: "a nutritional gauntlet", location: "Philly", start_time: Time.now, end_time: Time.now + 8.hours, duration: 4, cost: 40, user_id: test_user.id)
 
 
 user = User.create(
   email: "fake@fake.com",
+  fname: Faker::Ancient.primordial,
+  lname: Faker::Dog.sound,
   password: '123456',
   )
   3.times do
