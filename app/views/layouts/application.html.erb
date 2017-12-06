@@ -15,10 +15,7 @@
     </div>
     <div class="navlinks">
       <% if user_signed_in? %>
-      <p>Logged in as:<p>
-
-      <%= current_user.email %>
-        <br>
+      <p>Logged in as: <%= current_user.fname %><p>
 
         <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %>
         |
