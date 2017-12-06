@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171205164606) do
+ActiveRecord::Schema.define(version: 20171206162038) do
 
   create_table "calendars", force: :cascade do |t|
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
   end
 
   create_table "events", force: :cascade do |t|
@@ -24,13 +24,36 @@ ActiveRecord::Schema.define(version: 20171205164606) do
     t.string "location"
     t.datetime "start_time"
     t.datetime "end_time"
+    t.integer "duration"
+    t.integer "cost"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "events_trips", force: :cascade do |t|
+    t.integer "event_id"
+    t.integer "trip_id"
+    t.index ["event_id"], name: "index_events_trips_on_event_id"
+    t.index ["trip_id"], name: "index_events_trips_on_trip_id"
+  end
+
+  create_table "events_users", force: :cascade do |t|
+    t.integer "event_id"
     t.integer "user_id"
-    t.integer "calendar_id"
+    t.index ["event_id"], name: "index_events_users_on_event_id"
+    t.index ["user_id"], name: "index_events_users_on_user_id"
   end
 
   create_table "trips", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.string "location"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.integer "duration"
+    t.integer "cost"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

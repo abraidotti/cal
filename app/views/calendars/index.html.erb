@@ -1,23 +1,21 @@
 <% @time1 = Time.new %>
 
+  <%= month_calendar events: @trips do |date, trip| %>
 
-  <%= month_calendar events: @events do |date, events| %>
-  <% if @time1.day == date.day && !events.empty? %>
-      <div class="cal-day current-day has_events"><%= link_to date.day, calendars_show_path(date) %>
+  <% if @time1.day == date.day && !trip.empty? %>
+      <div class="cal-day current-day has_trips"><%= link_to date.day, calendars_show_path(date) %>
 
-  <% elsif @time1.day == date.day && events.empty? %>
+  <% elsif @time1.day == date.day && trip.empty? %>
     <div class="cal-day current-day"><%= date.day %> </div>
 
-
-  <% elsif @time1.day != date.day && !events.empty? %>
+  <% elsif @time1.day != date.day && !trip.empty? %>
       <% if @time1.month != date.month %>
-      <div class="cal-day has_events not-current-month"><%= link_to date.day, calendars_show_path(date) %>
+      <div class="cal-day has_trips not-current-month"><%= link_to date.day, calendars_show_path(date) %>
       </div>
       <% else %>
-      <div class="cal-day has_events"><%= link_to date.day, calendars_show_path(date) %>
+      <div class="cal-day has_trips"><%= link_to date.day, calendars_show_path(date) %>
       </div>
       <% end %>
-
 
   <% else %>
   <% if @time1.month != date.month %>
