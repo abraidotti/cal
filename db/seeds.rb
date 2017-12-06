@@ -9,35 +9,46 @@ require 'faker'
 
 test_user = User.create(email: "test@test.com", password: "123456")
 
-test_trip = Trip.create(name: "A night in Philly", description: "a nutritional gauntlet", location: "Philly", start_time: Time.now, end_time: Time.now, duration: 4, cost: 40, user_id: test_user.id)
+test_trip = Trip.create(name: "A night in Philly", description: "a nutritional gauntlet", location: "Philly", start_time: Time.now, end_time: Time.now + 8.hours, duration: 4, cost: 40, user_id: test_user.id)
 
-3.times do
-  user = User.create(
-    email: Faker::Internet.email,
-    password: '123456',
+
+user = User.create(
+  email: "fake@fake.com",
+  password: '123456',
+  )
+  3.times do
+    user.events << Event.create(
+      name: Faker::Coffee.blend_name + " " + user.email,
+      description: Faker::Coffee.notes,
+      location: Faker::Space.planet,
+      start_time: Time.now + 1.hours,
+      end_time: Time.now + 3.hours,
+      duration: 3,
+      cost: 5,
+      user_id: user.id
     )
+  end
+  3.times do
+      user.trips << Trip.create(
+        name: Faker::Coffee.blend_name + " " + user.email,
+        description: Faker::RickAndMorty.quote,
+        location: "Philly",
+        start_time: Time.now,
+        end_time: Time.now + 9.hours,
+        duration: 4,
+        cost: 40,
+        user_id: user.id
+      )
+    end
     3.times do
-      user.events << Event.create(
-        name: Faker::Coffee.blend_name,
+      user.trips.last.events << Event.create(
+        name: Faker::Coffee.blend_name + " " + user.email,
         description: Faker::Coffee.notes,
         location: Faker::Space.planet,
-        start_time: Time.now,
-        end_time: Time.now,
+        start_time: Time.now + 1.hours,
+        end_time: Time.now + 3.hours,
         duration: 3,
         cost: 5,
         user_id: user.id
       )
     end
-    3.times do
-        user.trips << Trip.create(
-          name: Faker::Coffee.blend_name,
-          description: Faker::RickAndMorty.quote,
-          location: "Philly",
-          start_time: Time.now,
-          end_time: Time.now,
-          duration: 4,
-          cost: 40,
-          user_id: user.id
-        )
-      end
-end
