@@ -18,6 +18,8 @@
 <%= f.label "End time", class: 'form-label' %>
 <%= f.datetime_select :end_time %>
 <br>
+<%= f.label "Cost", class: 'form-label' %>
+<p>1 <%= range_field(:event, :cost, in: 1..5) %> 5</p>
 <%= f.submit %>
 <% end %>
 </div>
