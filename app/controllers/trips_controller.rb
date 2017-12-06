@@ -1,6 +1,11 @@
 class TripsController < ApplicationController
   before_action :authenticate_user!
 
+  def index
+    @mytrips = current_user.trips.all
+    @alltrips = Trip.all
+  end
+
   def show
     find_trip
   end
@@ -42,6 +47,7 @@ class TripsController < ApplicationController
           redirect_to edit_trip_path(@trip), notice: @trip.errors.full_messages.last
         end
       end
+  end
 
   def remove
     @trip = Trip.find(params[:id])
@@ -58,7 +64,6 @@ class TripsController < ApplicationController
   def destroy
     find_trip
     @trip.destroy
-
     redirect_to '/'
   end
 
