@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :events
+  resources :trips
 
   get 'calendars/index'
   get 'calendars/show'
