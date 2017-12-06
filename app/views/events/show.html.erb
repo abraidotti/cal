@@ -30,5 +30,6 @@
 <h3>Add This Event to a Trip?</h3>
   <%= form_with(model: @trip, local: true) do |f| %>
   <%= f.select :trip_ids, options_from_collection_for_select(current_user.trips.all, 'id', 'name') %>
+  <%= f.hidden_field :event, :value => @event.id%>
   <%= f.submit "Assign"%>
   <% end %>
