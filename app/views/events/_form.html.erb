@@ -37,11 +37,17 @@
   <%= f.datetime_select :start_time %>
   <br>
   <%= f.label "Duration", class: 'form-label' %>
-  <p><%= f.select :duration, (0..10) %> hours</p>
+  <p><%= f.select :duration, (1..10) %> hours</p>
   <br>
-  <%= f.select :trip_ids, options_from_collection_for_select(current_user.trips.all, 'id', 'name') %>
-  <%= f.hidden_field :event, :value => @event.id%>
-  <%= f.submit "Assign"%>
+
+  <% if current_user.trips.empty? %>
+    <p>You have no trips to add this to! But I guess you can clone it for later. </p>
+  <% else %>
+    <%= f.select :trip_ids, options_from_collection_for_select(current_user.trips.all, 'id', 'name') %>
+    <%= f.hidden_field :event, :value => @event.id%>
+  <% end %>
+
+  <%= f.submit "Clone Me"%>
   <% end %>
 <% end %>
 
