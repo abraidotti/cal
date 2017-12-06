@@ -1,0 +1,17 @@
+<h1>My Trips</h1>
+<ul>
+  <% @mytrips.each do |trip| %>
+      <li>
+        <a href="/trips/<%= trip.id%>"><%= trip.name %></a>
+      </li>
+  <% end %>
+</ul>
+
+<h1>All trips</h1>
+<ul>
+  <% @alltrips.each do |trip| %>
+      <li>
+        <a href="/trips/<%= trip.id%>"><%= trip.name %></a>
+      </li>
+  <% end %>
+</ul>
