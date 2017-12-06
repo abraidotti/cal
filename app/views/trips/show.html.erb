@@ -1,10 +1,20 @@
 <h1>trips#show</h1>
-<p>Find me in app/views/trips/show.html.erb</p>
 
 <%= @trip.name %>
 <br>
 <%= @trip.description %>
 <br>
+<% total = 0 %>
+<h4><%= total %> assigned events:</h4>
+<ul>
+  <% @trip.events.each do |event| %>
+    <% total += 1  %>
+    <li>
+      <a href="/events/<%=event.id%>"><%=event.name%></a>
+      <%= link_to 'remove', "/trips/#{@trip.id}?eventid=#{event.id}", method: :post %>
+    </li>
+  <% end %>
+</ul>
 
 <% if current_user.id == @trip.user_id %>
 <%= link_to 'Edit trip', edit_trip_path(@trip) %>

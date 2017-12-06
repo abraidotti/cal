@@ -1,7 +1,6 @@
 class User < ApplicationRecord
-  has_one :calendar
-  has_many :trips, dependent: :destroy
-  has_many :events
+  has_many :trips
+  has_many :events, though: :trips
   after_create :build_calendar
 
   def build_calendar
