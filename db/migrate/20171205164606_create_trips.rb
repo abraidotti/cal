@@ -4,10 +4,11 @@ class CreateTrips < ActiveRecord::Migration[5.1]
       t.string :name
       t.string :description
       t.string :location
-      t.decimal :cost, precision: 10, scale: 2
-      t.integer :duration
       t.datetime :start_time
       t.datetime :end_time
+      t.integer :duration
+      t.integer :cost
+      t.integer :user_id
       t.timestamps
     end
   end
