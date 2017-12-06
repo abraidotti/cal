@@ -27,14 +27,19 @@
         data: { confirm: 'Are you sure?! No one else will be able to use your cool event!' } %>
 <% end %>
 
+<% if !current_user.trips.empty? %>
+
 <h3>You're in town at the same time?! Do you want to go!?</h3>
   <%= form_with(model: @trip, local: true) do |f| %>
   <%= f.select :trip_ids, options_from_collection_for_select(current_user.trips.all, 'id', 'name') %>
   <%= f.hidden_field :event, :value => @event.id%>
   <%= f.submit "Go to this event!"%>
   <% end %>
-  <br>
-<p>Going on a trip later than this date? Clone this event here: </p>
-<%= link_to 'Clone it', edit_event_path(@event) %>
+
+<% end %>
+<br>
+
+<p>Want to do this exact thing at a later date? Clone the event below, and add it to your trip! </p>
+<%= link_to 'Yes, do it.', edit_event_path(@event) %>
 
 </div>

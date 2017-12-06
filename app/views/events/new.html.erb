@@ -16,7 +16,7 @@
 <%= f.datetime_select :start_time %>
 <br>
 <%= f.label "Duration", class: 'form-label' %>
-<p><%= f.select :duration, (0..10) %> hours</p>
+<p><%= f.select :duration, (1..10) %> hours</p>
 <br>
 <%= f.label "Cost", class: 'form-label' %>
 <p>1 <%= range_field(:event, :cost, in: 1..5) %> 5</p>
