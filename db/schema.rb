@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171205220333) do
+ActiveRecord::Schema.define(version: 20171206162038) do
 
   create_table "calendars", force: :cascade do |t|
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
   end
 
   create_table "events", force: :cascade do |t|
@@ -24,11 +24,11 @@ ActiveRecord::Schema.define(version: 20171205220333) do
     t.string "location"
     t.datetime "start_time"
     t.datetime "end_time"
+    t.integer "duration"
+    t.integer "cost"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
-    t.integer "calendar_id"
-    t.decimal "cost", precision: 10, scale: 2
   end
 
   create_table "events_trips", force: :cascade do |t|
@@ -42,14 +42,13 @@ ActiveRecord::Schema.define(version: 20171205220333) do
     t.string "name"
     t.string "description"
     t.string "location"
-    t.decimal "cost", precision: 10, scale: 2
-    t.integer "duration"
     t.datetime "start_time"
     t.datetime "end_time"
+    t.integer "duration"
+    t.integer "cost"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
-    t.integer "calendar_id"
   end
 
   create_table "users", force: :cascade do |t|
