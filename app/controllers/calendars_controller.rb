@@ -3,6 +3,7 @@ class CalendarsController < ApplicationController
 
   def index
     @trips = current_user.trips.all
+    @events = current_user.events.all
   end
 
   def show
