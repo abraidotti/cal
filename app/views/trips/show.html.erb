@@ -15,13 +15,13 @@
     </li>
   <% end %>
 </ul>
-
+<% if @trip.user_id == current_user.id %>
 <h3>add event to trip?</h3>
   <%= form_with(model: @trip, local: true) do |f| %>
   <%= f.select :event_ids, options_from_collection_for_select(Event.all, 'id', 'name') %>
   <%= f.submit "Assign"%>
   <% end %>
-
+<%end%>
 <% if current_user.id == @trip.user_id %>
 <%= link_to 'Edit trip', edit_trip_path(@trip) %>
 <%= link_to 'Delete trip Forever', trip_path(@trip),
