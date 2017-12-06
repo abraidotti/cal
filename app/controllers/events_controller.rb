@@ -31,22 +31,11 @@ class EventsController < ApplicationController
 
   def update
     @event = Event.find_by_id(params[:id])
-    @trip = Trip.find_by_id(params[:id])
-      if trip_event_params[:trip_ids]
-        @trip.events << @event
-        @trip.save
-        redirect_to trip_path(@trip)
-      else
-        begin
-          if @trip.update(trip_params)
-            redirect_to trip_path(@trip)
-          else
-            redirect_to edit_trip_path(@trip), notice: @trip.errors.full_messages.last
-          end
-        rescue
-          redirect_to edit_trip_path(@trip), notice: @trip.errors.full_messages.last
-        end
-      end
+    if @event.update(event_params)
+      redirect_to @event
+    else
+      render 'edit'
+    end
   end
 
   def destroy
