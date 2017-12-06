@@ -39,7 +39,7 @@ class TripsController < ApplicationController
       else
         begin
           if @trip.update(trip_params)
-            redirect_to trip_path(@job)
+            redirect_to trip_path(@trip)
           else
             redirect_to edit_trip_path(@trip), notice: @trip.errors.full_messages.last
           end
@@ -52,14 +52,14 @@ class TripsController < ApplicationController
   def remove
     @trip = Trip.find(params[:id])
     for i in 0...@trip.events.length do
-      if @trip.events[i].id == params[:event_id].to_i
-        @trip.events.delete(@trip.events[i])
-        @trip.save
-        break
-      end
+       if @trip.events[i].id == params[:eventid].to_i
+         @trip.events.delete(@trip.events[i])
+         @trip.save
+         break
+       end
+     end
+     redirect_to trip_path(@trip)
     end
-    redirect_to trip_path(@trip)
-  end
 
   def destroy
     find_trip
