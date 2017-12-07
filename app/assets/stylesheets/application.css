@@ -79,7 +79,7 @@ a:hover {
 }
 
 .current-day {
-  border: 1px solid white;
+  border: 1px solid #015249;
 }
 
 .has_trips {
@@ -101,7 +101,7 @@ a:hover {
 }
 
 .not-current-month{
-  background-color: lightgrey;
+  background-color: #A5A5AF;
 }
 
 .new-event-box{
