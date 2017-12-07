@@ -15,10 +15,9 @@
 <h2> Cost: </h2>
 <p>$<%= @event.cost %></p>
 <h2> Duration: </h2>
-<p><%= @event.duration %> hours</p>
+<p><%= distance_of_time_in_words(@event.duration) %></p>
 <h2>Created By:</h2>
-<% @user = User.find_by_id(@event.user_id) %>
-<p><%= @user.email %></p>
+<p><%= @event.users.first.email %></p>
 
 <% if current_user.id == @event.user_id %>
 <%= link_to 'Edit Event', edit_event_path(@event) %> |
