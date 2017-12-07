@@ -14,14 +14,14 @@
   <%end%>
 
   <br>
-  <p> Duration: <%= distance_of_time_in_words(@trip.duration) %></p>
+  <p> Duration: <%= distance_of_time_in_words(@trip.duration.day) %></p>
   <h4><%= @trip.events.count %> assigned events:</h4>
     <% @trip.events.each do |event| %>
       <br>
         <a href="/events/<%=event.id%>"><%=event.name%></a>
         <p> Description: <%= event.description %></p>
         <p> Start time: <%= event.start_time.localtime.strftime("%B %d, %Y %I:%M %p") %></p>
-        <p> Duration: <%= distance_of_time_in_words(event.duration) %></p>
+        <p> Duration: <%= distance_of_time_in_words(event.duration.hours) %></p>
         <% if @trip.user_id == current_user.id %>
         <%= link_to 'remove this event', "/trips/#{@trip.id}?eventid=#{event.id}", method: :post %>
         <% end %>
