@@ -13,7 +13,7 @@
 
 
   <br>
-  <p> Duration: <%= distance_of_time_in_words(@trip.duration.hours) %></p>
+  <p> Duration: <%= distance_of_time_in_words(@trip.duration.day) %></p>
   <h4><%= @trip.events.count %> assigned events:</h4>
     <% @trip.events.each do |event| %>
       <br>
