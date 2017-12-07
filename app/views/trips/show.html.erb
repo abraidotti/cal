@@ -20,7 +20,9 @@
         <a href="/events/<%=event.id%>"><%=event.name%></a>
         <p> Description: <%= event.description %></p>
         <p> Duration: <%= distance_of_time_in_words(event.duration) %></p>
+        <% if @trip.user_id == current_user.id %>
         <%= link_to 'remove this event', "/trips/#{@trip.id}?eventid=#{event.id}", method: :post %>
+        <% end %>
       <br>
     <% end %>
 
