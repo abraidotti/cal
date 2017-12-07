@@ -22,7 +22,7 @@ class TripsController < ApplicationController
     current_user
     @trip = Trip.new(trip_params)
     @trip.user_id = current_user.id
-    @trip.duration = @trip.end_time - @trip.start_time
+    @trip.duration = @trip.end_time.localtime.strftime("%d").to_i - @trip.start_time.localtime.strftime("%d").to_i
     @trip.save
     if @trip.save
       redirect_to root_path
@@ -87,7 +87,6 @@ class TripsController < ApplicationController
   def get_event
     @event = Event.find_by_id(params[:id])
   end
-
 
   def find_trip
     @trip = Trip.find_by_id(params[:id])

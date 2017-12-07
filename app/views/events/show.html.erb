@@ -23,7 +23,7 @@
 <h2> Cost: </h2>
 <p>$<%= @event.cost %></p>
 <h2> Duration: </h2>
-<p><%= distance_of_time_in_words(@event.duration) %></p>
+<p><%= distance_of_time_in_words(@event.duration.hour) %></p>
 <h2>Created By:</h2>
 <p><%= User.find(@event.user_id).email %></p>
 

@@ -1,6 +1,4 @@
 <div class="indent-box">
-<h1> Use This Event </h1>
-
 <% if current_user.id == @event.user_id %>
 <h2> Update Your Event </h2>
   <%= form_with(model: @event, local:true) do |f| %>
@@ -24,7 +22,9 @@
   <p><%= f.submit %></p>
   <% end %>
 <% else %>
-<h2> Clone this Event for Yourself! </h2>
+  <h2> Clone this Event for Yourself! </h2>
+  <div class="form-wrapper">
+  <div class='box two'>
   <%= form_with(model: Event.new, local: true) do |f| %>
   <br>
   <%= f.label "test", class: 'form-label' %>
@@ -43,16 +43,29 @@
   <span><%= f.select :duration, (1..10) %> hours</span>
   <%= f.label "Cost", class: 'form-label' %>
   <span>$<%= f.select :cost, (1..1000), step: 5 %></span>
-
-  <% if current_user.trips.empty? %>
-    <p>You have no trips to add this to! But I guess you can clone it for later. </p>
-  <% else %>
-    <%= f.select :trip_ids, options_from_collection_for_select(current_user.trips.all, 'id', 'name') %>
-    <%= f.hidden_field :event, :value => @event.id%>
-  <% end %>
-
-  <%= f.submit "Clone Me"%>
+    <% if current_user.trips.empty? %>
+      <p>You have no trips to add this to! But I guess you can clone it for later. </p>
+    <% else %>
+      <%= f.select :trip_ids, options_from_collection_for_select(current_user.trips.all, 'id', 'name') %>
+      <%= f.hidden_field :event, :value => @event.id%>
+    <% end %>
+    <br>
+    <%= f.submit "Clone Me"%>
+  </div>
+  <div class='box one'>
+  <p>You have trips from: </p>
+  <ul style="list-style: none;">
+    <% current_user.trips.each do |trip| %>
+        <li>
+          <a href="/trips/<%= trip.id%>"><%= trip.start_time.localtime.strftime("%B %d, %Y %I:%M %p") %> to <%= trip.end_time.localtime.strftime("%B %d, %Y %I:%M %p") %> </a>
+        </li>
+    <% end %>
+  </ul>
+  </div>
   <% end %>
 <% end %>
+
+</div>
+
 
 </div>
