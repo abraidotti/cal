@@ -108,3 +108,8 @@ a:hover {
   margin-left: 20px;
   font-size: 1.2em;
 }
+
+.form-wrapper{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
