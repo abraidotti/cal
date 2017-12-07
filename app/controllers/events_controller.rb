@@ -3,7 +3,7 @@ class EventsController < ApplicationController
 
   def index
     @events = Event.all
-    @hash = Gmaps4rails.build_markers(@events) do |event, marker|
+    @markers = Gmaps4rails.build_markers(@events) do |event, marker|
       marker.lat event.latitude
       marker.lng event.longitude
     end
@@ -12,6 +12,10 @@ class EventsController < ApplicationController
   def show
     @event = Event.find_by_id(params[:id])
     @trip = Trip.find_by_id(params[:id])
+    @markers = Gmaps4rails.build_markers(@event) do |event, marker|
+      marker.lat event.latitude
+      marker.lng event.longitude
+    end
   end
 
   def new
