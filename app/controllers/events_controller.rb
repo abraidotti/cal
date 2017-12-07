@@ -45,7 +45,8 @@ class EventsController < ApplicationController
         redirect_to trip_path(@trip)
       end
     else
-      render 'show'
+      flash[:notice] = "This event starts before your trip, but you can still clone it at the bottom of this page!"
+      redirect_to @event
     end
   end
 
