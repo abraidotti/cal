@@ -12,7 +12,7 @@
 <%= f.text_field :description %>
 <br>
 <%= f.label "Location: ", class: 'form-label' %>
-<%= f.select(:location, $locations) %>
+<%= f.text_field :location %>
 <br>
 <%= f.label "Start time", class: 'form-label' %>
 <%= f.datetime_select :start_time, :default => Time.now, ampm: true %>

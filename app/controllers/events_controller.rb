@@ -3,6 +3,10 @@ class EventsController < ApplicationController
 
   def index
     @events = Event.all
+    @hash = Gmaps4rails.build_markers(@users) do |user, marker|
+      marker.lat user.latitude
+      marker.lng user.longitude
+    end
   end
 
   def show
@@ -41,11 +45,9 @@ class EventsController < ApplicationController
       end
     elsif @event.start_time >= @trip.start_time && @event.start_time < @trip.end_time
       @trip.events << @event
-      if @trip.save
-        redirect_to trip_path(@trip)
-      end
+      redirect_to trip_path(@trip) if @trip.save
     else
-      flash[:notice] = "This event starts before your trip, but you can still clone it at the bottom of this page!"
+      flash[:notice] = 'This event starts before your trip, but you can still clone it at the bottom of this page!'
       redirect_to @event
     end
   end
@@ -63,7 +65,7 @@ class EventsController < ApplicationController
     params.require(:event).permit(:name, :description, :location, :start_time, :duration, :cost, :trip_ids)
   end
 
-    def event_trip_params
-      params.require(:event).permit(:trip_ids)
-    end
+  def event_trip_params
+    params.require(:event).permit(:trip_ids)
+  end
 end
