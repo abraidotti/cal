@@ -1,5 +1,6 @@
+<div class="indent-box">
 <h1>My Trips</h1>
-<ul>
+<ul style="list-style: none;">
   <% @mytrips.each do |trip| %>
       <li>
         <a href="/trips/<%= trip.id%>"><%= trip.name %></a>
@@ -8,10 +9,11 @@
 </ul>
 
 <h1>All trips</h1>
-<ul>
+<ul style="list-style: none;">
   <% @alltrips.each do |trip| %>
       <li>
         <a href="/trips/<%= trip.id%>"><%= trip.name %></a>
       </li>
   <% end %>
 </ul>
+</div>

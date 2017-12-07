@@ -1,4 +1,4 @@
-<div class="new-trip-box">
+<div class="indent-box">
 <h1>Add a Trip</h1>
 
 <%= form_with(model: Trip.new, local:true) do |f| %>
@@ -10,10 +10,10 @@
 <%= f.text_field :description %>
 <br>
 <%= f.label "Start time", class: 'form-label' %>
-<%= f.datetime_select :start_time, ampm: true %>
+<%= f.datetime_select :start_time, :default => Time.now, ampm: true %>
 <br>
 <%= f.label "End time", class: 'form-label' %>
-<%= f.datetime_select :end_time, ampm: true %>
+<%= f.datetime_select :end_time, :default => Time.now, ampm: true %>
 <br>
 <%= f.submit %>
 <% end %>
