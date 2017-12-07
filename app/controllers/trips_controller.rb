@@ -88,10 +88,6 @@ class TripsController < ApplicationController
     @event = Event.find_by_id(params[:id])
   end
 
-  def event_trip_params
-    params.require(:trip).permit(:trip_ids)
-  end
-
 
   def find_trip
     @trip = Trip.find_by_id(params[:id])
