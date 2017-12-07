@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   has_many :trips
   has_and_belongs_to_many :events
+  validates :fname, presence: true
+  validates :lname, presence: true
   after_create :build_calendar
 
   def build_calendar
