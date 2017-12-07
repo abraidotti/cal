@@ -1,20 +1,45 @@
-<h1>Events#show</h1>
-<p>Find me in app/views/events/show.html.erb</p>
-
-<%= @event.name %>
-<br>
+<div class='new-event-box'>
+<h1> Your Event: <%= @event.name %>  </h1>
+<h2> Description: </h2>
 <%= @event.description %>
 <br>
+<h2> Location: </h2>
 <%= @event.location %>
 <br>
-<%= @event.start_time %>
+<h2> Start Time: </h2>
+<%= @event.start_time.localtime.strftime("%B %d, %Y %I:%M %p") %>
 <br>
-<%= @event.end_time %>
+<h2> End Time: </h2>
+<%= @event.end_time.localtime.strftime("%B %d, %Y %I:%M %p") %>
 <br>
+<h2> Cost: </h2>
+<p>$<%= @event.cost %></p>
+<h2> Duration: </h2>
+<p><%= distance_of_time_in_words(@event.duration) %></p>
+<h2>Created By:</h2>
+<p><%= User.find(@event.user_id).email %></p>
 
 <% if current_user.id == @event.user_id %>
-<%= link_to 'Edit Event', edit_event_path(@event) %>
+<%= link_to 'Edit Event', edit_event_path(@event) %> |
 <%= link_to 'Delete Event Forever', event_path(@event),
         method: :delete,
         data: { confirm: 'Are you sure?! No one else will be able to use your cool event!' } %>
 <% end %>
+
+
+<% if !current_user.trips.empty? %>
+
+<h3>You're in town at the same time?! Do you want to go!?</h3>
+  <%= form_with(model: @event, local: true) do |f| %>
+  <%= f.select :trip_ids, options_from_collection_for_select(current_user.trips.all, 'id', 'name') %>
+  <%# f.hidden_field :trip, :value => @trip.id%>
+  <%= f.submit "Go to this event!"%>
+  <% end %>
+
+<% end %>
+<br>
+
+<p>Want to do this exact thing at a later date? Clone the event below, and add it to your trip! </p>
+<%= link_to 'Yes, do it.', edit_event_path(@event) %>
+
+</div>

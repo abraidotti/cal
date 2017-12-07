@@ -7,6 +7,7 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find_by_id(params[:id])
+    @trip = Trip.find_by_id(params[:id])
   end
 
   def new
@@ -20,6 +21,7 @@ class EventsController < ApplicationController
   def create
     @event = Event.create(event_params)
     @event.user_id = current_user.id
+    @event.end_time = @event.start_time + @event.duration.hours
     current_user.events << @event
     if @event.save
       redirect_to events_path
@@ -30,10 +32,20 @@ class EventsController < ApplicationController
 
   def update
     @event = Event.find_by_id(params[:id])
-    if @event.update(event_params)
-      redirect_to @event
+    @trip = Trip.find_by_id(event_trip_params[:trip_ids])
+    if event_params[:name]
+      if @event.update(event_params)
+        redirect_to trip_path(@trip)
+      else
+        render 'edit'
+      end
     else
-      render 'edit'
+      @trip.events << @event
+      if @trip.save
+        redirect_to trip_path(@trip)
+      else
+        render 'show'
+      end
     end
   end
 
@@ -47,6 +59,10 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:name, :description, :location, :start_time, :end_time, :cost, :duration)
+    params.require(:event).permit(:name, :description, :location, :start_time, :duration, :cost, :trip_ids)
   end
+
+    def event_trip_params
+      params.require(:event).permit(:trip_ids)
+    end
 end
