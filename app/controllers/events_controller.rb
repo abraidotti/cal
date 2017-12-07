@@ -39,13 +39,13 @@ class EventsController < ApplicationController
       else
         render 'edit'
       end
-    else
+    elsif @event.start_time >= @trip.start_time && @event.start_time < @trip.end_time
       @trip.events << @event
       if @trip.save
         redirect_to trip_path(@trip)
-      else
-        render 'show'
       end
+    else
+      render 'show'
     end
   end
 
