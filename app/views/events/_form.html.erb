@@ -1,7 +1,7 @@
 <div class="new-event-box">
-<h1> Use This Event </h1>
 
 <% if current_user.id == @event.user_id %>
+<h2> Update Your Event </h2>
   <%= form_with(model: @event, local:true) do |f| %>
   <br>
   <%= f.label "Name: ", class: 'form-label' %>
@@ -23,6 +23,7 @@
   <p><%= f.submit %></p>
   <% end %>
 <% else %>
+<h2> Clone this Event for Yourself! </h2>
   <%= form_with(model: Event.new, local: true) do |f| %>
   <br>
   <%= f.label "test", class: 'form-label' %>
