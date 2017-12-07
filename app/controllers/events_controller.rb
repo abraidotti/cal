@@ -39,13 +39,14 @@ class EventsController < ApplicationController
       else
         render 'edit'
       end
-    else
+    elsif @event.start_time >= @trip.start_time && @event.start_time < @trip.end_time
       @trip.events << @event
       if @trip.save
         redirect_to trip_path(@trip)
-      else
-        render 'show'
       end
+    else
+      flash[:notice] = "This event starts before your trip, but you can still clone it at the bottom of this page!"
+      redirect_to @event
     end
   end
 

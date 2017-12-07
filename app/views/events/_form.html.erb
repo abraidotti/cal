@@ -2,6 +2,7 @@
 <h1> Use This Event </h1>
 
 <% if current_user.id == @event.user_id %>
+<h2> Update Your Event </h2>
   <%= form_with(model: @event, local:true) do |f| %>
   <br>
   <%= f.label "Name: ", class: 'form-label' %>
@@ -16,12 +17,14 @@
   <%= f.label "Start time", class: 'form-label' %>
   <%= f.datetime_select :start_time, :default => Time.now, ampm: true %>
   <br>
-  <%= f.label "End time", class: 'form-label' %>
-  <%= f.datetime_select :end_time, :default => Time.now, ampm: true %>
-  <br>
-  <%= f.submit %>
+  <%= f.label "Duration", class: 'form-label' %>
+  <span><%= f.select :duration, (1..10) %> hours</span>
+  <%= f.label "Cost", class: 'form-label' %>
+  <span>$<%= f.select :cost, (1..1000), step: 5 %></span>
+  <p><%= f.submit %></p>
   <% end %>
 <% else %>
+<h2> Clone this Event for Yourself! </h2>
   <%= form_with(model: Event.new, local: true) do |f| %>
   <br>
   <%= f.label "test", class: 'form-label' %>
@@ -37,8 +40,9 @@
   <%= f.datetime_select :start_time %>
   <br>
   <%= f.label "Duration", class: 'form-label' %>
-  <p><%= f.select :duration, (1..10) %> hours</p>
-  <br>
+  <span><%= f.select :duration, (1..10) %> hours</span>
+  <%= f.label "Cost", class: 'form-label' %>
+  <span>$<%= f.select :cost, (1..1000), step: 5 %></span>
 
   <% if current_user.trips.empty? %>
     <p>You have no trips to add this to! But I guess you can clone it for later. </p>
