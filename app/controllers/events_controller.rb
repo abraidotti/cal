@@ -35,7 +35,7 @@ class EventsController < ApplicationController
     @trip = Trip.find_by_id(event_trip_params[:trip_ids])
     if event_params[:name]
       if @event.update(event_params)
-        redirect_to trip_path(@trip)
+        redirect_to event_path(@event)
       else
         render 'edit'
       end
