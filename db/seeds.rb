@@ -19,7 +19,7 @@ test_user.events << Event.create(
   location: "824 Morris St, Philadelphia, PA",
   start_time: Time.now + 1.hours,
   end_time: Time.now + 3.hours,
-  duration: 3,
+  duration: 2,
   cost: 5,
   user_id: test_user.id
 )
@@ -29,7 +29,7 @@ test_user.trips << Trip.create(
   location: "741 Federal St, Philadelphia, PA",
   start_time: Time.now,
   end_time: Time.now + 8.hours,
-  duration: 4,
+  duration: 8,
   cost: 40,
   user_id: test_user.id
 )
