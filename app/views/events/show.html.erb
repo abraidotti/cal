@@ -30,9 +30,9 @@
 <% if !current_user.trips.empty? %>
 
 <h3>You're in town at the same time?! Do you want to go!?</h3>
-  <%= form_with(model: @trip, local: true) do |f| %>
+  <%= form_with(model: @event, local: true) do |f| %>
   <%= f.select :trip_ids, options_from_collection_for_select(current_user.trips.all, 'id', 'name') %>
-  <%= f.hidden_field :event, :value => @event.id%>
+  <%# f.hidden_field :trip, :value => @trip.id%>
   <%= f.submit "Go to this event!"%>
   <% end %>
 
