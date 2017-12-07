@@ -11,7 +11,9 @@
 
   <nav class="navbar">
     <div>
-      <%= image_tag("logo_small_black.png", :alt => "logo") %>
+      <%= link_to calendars_index_path do %>
+       <%= image_tag "logo_small_black.png" %>
+      <% end %>
     </div>
     <div class="navlinks">
       <% if user_signed_in? %>
