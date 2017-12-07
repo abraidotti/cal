@@ -1,5 +1,13 @@
+<div style='width: 800px;'>
+  <div id="map" style='width: 800px; height: 400px;'></div>
+</div>
+
+
 <div class='indent-box'>
 <h1> Your Event: <%= @event.name %>  </h1>
+<%= @event.latitude %>
+<%= @event.longitude %>
+
 <h2> Description: </h2>
 <%= @event.description %>
 <br>
