@@ -18,10 +18,9 @@
 <%= f.datetime_select :start_time, :default => Time.now, ampm: true %>
 <br>
 <%= f.label "Duration", class: 'form-label' %>
-<p><%= f.select :duration, (1..10) %> hours</p>
-<br>
+<span><%= f.select :duration, (1..10) %> hours</span>
 <%= f.label "Cost", class: 'form-label' %>
-<p><%= f.select :cost, in: (1..5) %></p>
-<%= f.submit %>
+<span>$<%= f.select :cost, (1..1000), step: 5 %></span>
+<p><%= f.submit %></p>
 <% end %>
 </div>
