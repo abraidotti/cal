@@ -88,7 +88,6 @@ class TripsController < ApplicationController
     @event = Event.find_by_id(params[:id])
   end
 
-
   def find_trip
     @trip = Trip.find_by_id(params[:id])
   end
