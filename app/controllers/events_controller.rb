@@ -42,7 +42,7 @@ class EventsController < ApplicationController
     else
       @trip.events << @event
       if @trip.save
-        redirect_to @event
+        redirect_to trip_path(@trip)
       else
         render 'show'
       end
