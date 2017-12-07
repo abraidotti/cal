@@ -22,6 +22,7 @@ class TripsController < ApplicationController
     current_user
     @trip = Trip.new(trip_params)
     @trip.user_id = current_user.id
+    @trip.duration = @trip.end_time - @trip.start_time
     @trip.save
     if @trip.save
       redirect_to root_path
