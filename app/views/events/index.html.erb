@@ -3,7 +3,8 @@
   <% @events.each do |event| %>
       <li>
         <a href="/events/<%= event.id%>"><%= event.name %></a> |
-        <span><%= User.find(event.user_id).email%></span>
+        <span><%= User.find(event.user_id).email%></span>  |
+        <span><%= event.location %></span>
       </li>
   <% end %>
 </ul>
