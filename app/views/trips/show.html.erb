@@ -1,24 +1,33 @@
-<h1>trips#show</h1>
+<div class='new-event-box'>
+  <h1><%= @trip.name %></h1>
+  <p><i><%= @trip.description %></i></p>
 
-<%= @trip.name %>
-<br>
-<%= @trip.description %>
-<br>
-<% total = 0 %>
-<h4><%= total %> assigned events:</h4>
-<ul>
-  <% @trip.events.each do |event| %>
-    <% total += 1  %>
-    <li>
-      <a href="/events/<%=event.id%>"><%=event.name%></a>
-      <%= link_to 'remove', "/trips/#{@trip.id}?eventid=#{event.id}", method: :post %>
-    </li>
+  <br>
+  <% if @trip.user_id == current_user.id %>
+  <h3> Add your events to your trip: </h3>
+    <%= form_with(model: @trip, local: true) do |f| %>
+    <%= f.select :event_ids, options_from_collection_for_select(current_user.events.all, 'id', 'name') %>
+    <%= f.submit "Assign"%>
+    <% end %>
+  <%end%>
+
+
+  <br>
+  <p> Duration: <%= distance_of_time_in_words(@trip.duration) %></p>
+  <h4><%= @trip.events.count %> assigned events:</h4>
+    <% @trip.events.each do |event| %>
+      <br>
+        <a href="/events/<%=event.id%>"><%=event.name%></a>
+        <p> Description: <%= event.description %></p>
+        <p> Duration: <%= distance_of_time_in_words(event.duration) %></p>
+        <%= link_to 'remove this event', "/trips/#{@trip.id}?eventid=#{event.id}", method: :post %>
+      <br>
+    <% end %>
+
+  <% if current_user.id == @trip.user_id %>
+  <%= link_to 'Edit trip', edit_trip_path(@trip) %> |
+  <%= link_to 'Delete trip Forever', trip_path(@trip),
+          method: :delete,
+          data: { confirm: 'Are you sure?! No one else will be able to use your cool trip!' } %>
   <% end %>
-</ul>
-
-<% if current_user.id == @trip.user_id %>
-<%= link_to 'Edit trip', edit_trip_path(@trip) %>
-<%= link_to 'Delete trip Forever', trip_path(@trip),
-        method: :delete,
-        data: { confirm: 'Are you sure?! No one else will be able to use your cool trip!' } %>
-<% end %>
+</div>
