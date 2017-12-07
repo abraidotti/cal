@@ -15,7 +15,7 @@
 <%= f.select(:location, $locations) %>
 <br>
 <%= f.label "Start time", class: 'form-label' %>
-<%= f.datetime_select :start_time, ampm: true %>
+<%= f.datetime_select :start_time, :default => Time.now, ampm: true %>
 <br>
 <%= f.label "Duration", class: 'form-label' %>
 <p><%= f.select :duration, (1..10) %> hours</p>
