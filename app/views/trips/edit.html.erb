@@ -1,4 +1,4 @@
-<div class="new-trip-box">
+<div class="indent-box">
   <h1>Edit a Trip</h1>
 
   <% if current_user.id == @trip.user_id %>
@@ -11,10 +11,10 @@
     <%= f.text_field :description %>
     <br>
     <%= f.label "Start time", class: 'form-label' %>
-    <%= f.datetime_select :start_time, ampm: true %>
+    <%= f.datetime_select :start_time, :default => Time.now, ampm: true %>
     <br>
     <%= f.label "End time", class: 'form-label' %>
-    <%= f.datetime_select :end_time, ampm: true %>
+    <%= f.datetime_select :end_time, :default => Time.now, ampm: true %>
     <br>
     <%= f.submit %>
   <% end %>
