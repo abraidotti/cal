@@ -16,10 +16,11 @@
   <%= f.label "Start time", class: 'form-label' %>
   <%= f.datetime_select :start_time, ampm: true %>
   <br>
-  <%= f.label "End time", class: 'form-label' %>
-  <%= f.datetime_select :end_time, ampm: true %>
-  <br>
-  <%= f.submit %>
+  <%= f.label "Duration", class: 'form-label' %>
+  <span><%= f.select :duration, (1..10) %> hours</span>
+  <%= f.label "Cost", class: 'form-label' %>
+  <span>$<%= f.select :cost, (1..1000), step: 5 %></span>
+  <p><%= f.submit %></p>
   <% end %>
 <% else %>
   <%= form_with(model: Event.new, local: true) do |f| %>
@@ -37,8 +38,9 @@
   <%= f.datetime_select :start_time %>
   <br>
   <%= f.label "Duration", class: 'form-label' %>
-  <p><%= f.select :duration, (1..10) %> hours</p>
-  <br>
+  <span><%= f.select :duration, (1..10) %> hours</span>
+  <%= f.label "Cost", class: 'form-label' %>
+  <span>$<%= f.select :cost, (1..1000), step: 5 %></span>
 
   <% if current_user.trips.empty? %>
     <p>You have no trips to add this to! But I guess you can clone it for later. </p>
