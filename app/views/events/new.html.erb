@@ -1,6 +1,8 @@
 <div class="new-event-box">
 <h1>Add an Event</h1>
 
+<%= Time.now %>
+
 <%= form_with(model: Event.new, local:true) do |f| %>
 <br>
 <%= f.label "Name: ", class: 'form-label' %>
@@ -13,7 +15,7 @@
 <%= f.select(:location, $locations) %>
 <br>
 <%= f.label "Start time", class: 'form-label' %>
-<%= f.datetime_select :start_time %>
+<%= f.datetime_select :start_time, ampm: true %>
 <br>
 <%= f.label "Duration", class: 'form-label' %>
 <p><%= f.select :duration, (1..10) %> hours</p>
