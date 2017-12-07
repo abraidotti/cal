@@ -1,6 +1,6 @@
 <div class='indent-box'>
   <h1><%= @trip.name %></h1>
-  <p><i><%= @trip.description.capitalize %> :  <%= distance_of_time_in_words(@trip.duration.day) %></i></p>
+  <p><i><%= @trip.description.capitalize %> :  <%= distance_of_time_in_words((@trip.end_time.localtime.strftime("%d").to_i - @trip.start_time.localtime.strftime("%d").to_i).day) %></i></p>
   <br>
   <p>This trip begins on <%= @trip.start_time.localtime.strftime("%B %d, %Y %I:%M %p") %></p>
   <p>and it ends on <%= @trip.end_time.localtime.strftime("%B %d, %Y %I:%M %p") %></p>
@@ -18,10 +18,10 @@
   <% if @trip.events.empty? %>
   <p> You don't have any events assigned to this trip yet!</p>
   <% else %>
-    <h4><%= @trip.events.count %> assigned events:</h4>
+    <h4>There are currently <%= @trip.events.count %> assigned events:</h4>
       <% @trip.events.each do |event| %>
         <br>
-          <a href="/events/<%=event.id%>"><%=event.name%></a>
+          <h4><a href="/events/<%=event.id%>"><%=event.name%></a></h4>
           <p> Description: <%= event.description %></p>
           <p> Start time: <%= event.start_time.localtime.strftime("%B %d, %Y %I:%M %p") %></p>
           <p> Duration: <%= distance_of_time_in_words(event.duration.hours) %></p>
@@ -31,7 +31,7 @@
         <br>
       <% end %>
     <% end %>
-
+<br>
   <% if current_user.id == @trip.user_id %>
   <%= link_to 'Edit trip', edit_trip_path(@trip) %> |
   <%= link_to 'Delete trip Forever', trip_path(@trip),
