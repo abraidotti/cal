@@ -8,6 +8,11 @@ class TripsController < ApplicationController
 
   def show
     find_trip
+    @events =  @trip.events.all
+    @markers = Gmaps4rails.build_markers(@events) do |event, marker|
+      marker.lat event.latitude
+      marker.lng event.longitude
+    end
   end
 
   def new
