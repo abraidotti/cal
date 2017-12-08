@@ -1,4 +1,3 @@
-$locations = ['1419 South Mole St, Philadelphia, PA', '2314 East Harold St, Philadelphia, PA', '1710 Naudain St, Philadelphia, PA', '1502 South Broad St, Philadelphia, PA', '826 Morris St, Philadelphia, PA']
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
