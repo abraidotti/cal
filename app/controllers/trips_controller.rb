@@ -42,7 +42,7 @@ class TripsController < ApplicationController
       if trip_event_params[:event_ids]
         @event = Event.find(trip_event_params[:event_ids])
         if @event.start_time >= @trip.start_time
-          if @trip.events.pluck(@event.id).include?(@event.id)
+          if @trip.events.pluck(:event_id).include?(@event.id)
             flash[:notice] = 'This trip already includes this event.'
             redirect_to trip_path(@trip)
           else
