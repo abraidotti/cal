@@ -105,11 +105,25 @@ a:hover {
 }
 
 .indent-box {
-  margin-left: 20px;
+  margin: 20px;
   font-size: 1.2em;
 }
 
 .form-wrapper{
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+}
+
+.show-grid {
+  display: grid;
+  grid-template-columns: 400px 600px;
+}
+
+.show-grid-1 {
+  display: grid;
+}
+
+.show-grid-2 {
+  display: grid;
+  margin: 20px;
 }
