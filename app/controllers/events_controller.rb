@@ -2,7 +2,20 @@ class EventsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @events = Event.all
+    @events = Event.order(:id)
+      if params[:order] == 'cost'
+          @events = Event.all.order('cost')
+      elsif params[:order] == 'name'
+          @events = Event.all.order('name')
+      elsif params[:order] == 'location'
+          @events = Event.all.order('location')
+      elsif params[:order] == 'start_time'
+          @events = Event.all.order('start_time')
+      elsif params[:order] == 'duration'
+          @events = Event.all.order('duration')
+      else
+          @events = Event.all
+      end
     @markers = Gmaps4rails.build_markers(@events) do |event, marker|
       marker.lat event.latitude
       marker.lng event.longitude
