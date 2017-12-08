@@ -113,3 +113,16 @@ a:hover {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
 }
+
+.show-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.show-grid-1 {
+  display: grid;
+}
+
+.show-grid-2 {
+  display: grid;
+}
