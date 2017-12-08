@@ -8,6 +8,11 @@ class TripsController < ApplicationController
 
   def show
     find_trip
+    @events =  @trip.events.all
+    @markers = Gmaps4rails.build_markers(@events) do |event, marker|
+      marker.lat event.latitude
+      marker.lng event.longitude
+    end
   end
 
   def new
@@ -35,11 +40,13 @@ class TripsController < ApplicationController
     find_trip
       if trip_event_params[:event_ids]
         @trip.events << Event.find(trip_event_params[:event_ids])
+        @trip.duration = @trip.end_time.localtime.strftime("%d").to_i - @trip.start_time.localtime.strftime("%d").to_i
         @trip.save
         redirect_to trip_path(@trip)
       elsif get_event
         @thistrip = Trip.find(event_trip_params[:trip_ids])
         @thistrip.events << @event
+        @trip.duration = @trip.end_time.localtime.strftime("%d").to_i - @trip.start_time.localtime.strftime("%d").to_i
         @thistrip.save
         redirect_to trip_path(@thistrip)
       else
@@ -60,6 +67,7 @@ class TripsController < ApplicationController
     for i in 0...@trip.events.length do
        if @trip.events[i].id == params[:eventid].to_i
          @trip.events.delete(@trip.events[i])
+         @trip.duration = @trip.end_time.localtime.strftime("%d").to_i - @trip.start_time.localtime.strftime("%d").to_i
          @trip.save
          break
        end
