@@ -1,5 +1,7 @@
 <div class="indent-box">
   <h1>All events</h1>
+  <button class="button" id="price">Sort By Price</button>
+  <button class="button" id="location">Sort By Location</button>
     <% @events.each do |event| %>
           <br>
           <a href="/events/<%= event.id%>"><%= event.name %></a> |
@@ -7,3 +9,30 @@
           <br>
     <% end %>
 </div>
+
+<% @prices = [];%>
+<% @events.each do |event|%>
+<% @prices.push(event.cost)%>
+<% end %>
+<% @locations = [];%>
+<% @events.each do |event|%>
+<% @locations.push(event.location)%>
+<% end %>
+
+<%= javascript_tag do %>
+var button = document.getElementById('price');
+
+var events = "<%=@prices%>"
+
+button.addEventListener('click', function(){
+  console.log(events)
+})
+
+var button2 = document.getElementById('location');
+
+var locations = "<%=@locations%>"
+
+button2.addEventListener('click', function(){
+  console.log(locations)
+})
+<% end %>
