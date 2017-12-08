@@ -40,6 +40,16 @@ class TripsController < ApplicationController
   def update
     find_trip
       if trip_event_params[:event_ids]
+<<<<<<< HEAD
+        @event = Event.find(trip_event_params[:event_ids])
+        if @event.start_time >= @trip.start_time
+          @trip.events << @event
+          @trip.save
+          redirect_to trip_path(@trip)
+        else
+          flash[:notice] = 'This event does not fall within your trip duration!'
+          redirect_to @trip
+=======
         @trip.events << Event.find(trip_event_params[:event_ids])
         @trip.duration = @trip.end_time.localtime.strftime("%d").to_i - @trip.start_time.localtime.strftime("%d").to_i
         @trip.save
@@ -59,7 +69,10 @@ class TripsController < ApplicationController
           end
         rescue
           redirect_to edit_trip_path(@trip), notice: @trip.errors.full_messages.last
+>>>>>>> master
         end
+      else @trip.update(trip_params)
+        redirect_to @trip
       end
   end
 
