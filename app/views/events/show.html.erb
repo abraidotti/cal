@@ -5,11 +5,13 @@
       <h1>
         <%= @event.name %>
       </h1>
-      <h4>Created By:
+      <h2>Host:
         <%= User.find(@event.user_id).fname %>
-        <%= User.find(@event.user_id).lname %></h4>
-        <p class="user-email"><%= User.find(@event.user_id).email %></p>
-
+        <%= User.find(@event.user_id).lname %>
+      </h2>
+      <h2>
+        Description:
+      </h2>
       <%= @event.description %>
       <br>
       <h2>
