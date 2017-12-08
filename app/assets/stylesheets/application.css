@@ -10,6 +10,23 @@ gray: #A5A5AF
 
 */
 
+select {
+  color: #015249;
+  height: 20px;
+  font-size: 15px;
+}
+
+input {
+  color: #015249;
+  height: 20px;
+  font-size: 15px;
+}
+
+button {
+  color: #015249;
+  height: 20px;
+  font-size: 15px;
+}
 
 * {
   font-family: 'Open Sans Condensed', sans-serif;
