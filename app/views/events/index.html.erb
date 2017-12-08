@@ -19,20 +19,24 @@
 <% @locations.push(event.location)%>
 <% end %>
 
+<%=@prices%>
+
 <%= javascript_tag do %>
 var button = document.getElementById('price');
 
-var events = "<%=@prices%>"
+var prices = <%=@prices%>
 
 button.addEventListener('click', function(){
-  console.log(events)
-})
+  var sortedPrices = prices.sort(function(a,b){ return a-b})
+  console.log(sortedPrices);
+});
 
 var button2 = document.getElementById('location');
 
 var locations = "<%=@locations%>"
 
 button2.addEventListener('click', function(){
+  var sortedLocals = locations.sort(function(a,b){return a - b})
   console.log(locations)
 })
 <% end %>
