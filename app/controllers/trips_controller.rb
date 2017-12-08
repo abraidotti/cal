@@ -28,7 +28,7 @@ class TripsController < ApplicationController
     current_user
     @trip = Trip.new(trip_params)
     @trip.user_id = current_user.id
-    @trip.duration = @trip.end_time.localtime.strftime("%d").to_i - @trip.start_time.localtime.strftime("%d").to_i
+    @trip.duration = ((@trip.end_time - @trip.start_time) / 3600).round
     @trip.save
     if @trip.save
       redirect_to root_path
@@ -40,26 +40,25 @@ class TripsController < ApplicationController
   def update
     find_trip
       if trip_event_params[:event_ids]
-        @trip.events << Event.find(trip_event_params[:event_ids])
-        @trip.duration = @trip.end_time.localtime.strftime("%d").to_i - @trip.start_time.localtime.strftime("%d").to_i
-        @trip.save
-        redirect_to trip_path(@trip)
-      elsif get_event
-        @thistrip = Trip.find(event_trip_params[:trip_ids])
-        @thistrip.events << @event
-        @trip.duration = @trip.end_time.localtime.strftime("%d").to_i - @trip.start_time.localtime.strftime("%d").to_i
-        @thistrip.save
-        redirect_to trip_path(@thistrip)
-      else
-        begin
-          if @trip.update(trip_params)
+        @event = Event.find(trip_event_params[:event_ids])
+        if @event.start_time >= @trip.start_time
+          if @trip.events.pluck(@event.id).include?(@event.id)
+            flash[:notice] = 'This trip already includes this event.'
             redirect_to trip_path(@trip)
           else
-            redirect_to edit_trip_path(@trip), notice: @trip.errors.full_messages.last
+            @trip.events << @event
+            @trip.duration = ((@trip.end_time - @trip.start_time) / 3600).round
+            @trip.save
+            redirect_to trip_path(@trip)
           end
-        rescue
-          redirect_to edit_trip_path(@trip), notice: @trip.errors.full_messages.last
+        else
+          flash[:notice] = 'This event does not fall within your trip duration!'
+          redirect_to @trip
         end
+      else @trip.update(trip_params)
+        @trip.duration = ((@trip.end_time - @trip.start_time) / 3600).round
+        @trip.save
+        redirect_to @trip
       end
   end
 
@@ -68,7 +67,7 @@ class TripsController < ApplicationController
     for i in 0...@trip.events.length do
        if @trip.events[i].id == params[:eventid].to_i
          @trip.events.delete(@trip.events[i])
-         @trip.duration = @trip.end_time.localtime.strftime("%d").to_i - @trip.start_time.localtime.strftime("%d").to_i
+         @trip.duration = ((@trip.end_time - @trip.start_time) / 3600).round
          @trip.save
          break
        end

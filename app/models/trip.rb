@@ -14,4 +14,6 @@ class Trip < ApplicationRecord
    errors.add(:start_time, "must be before end time") unless
       start_time < end_time
   end
+
+
 end
