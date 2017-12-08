@@ -34,11 +34,7 @@
           |
           <%= link_to "Calendar", "/" %>
           |
-          <%= link_to "New Event", new_event_path %>
-          |
-          <%= link_to "New Trip", new_trip_path %>
-          |
-          <%= link_to "All Events", events_path %>
+          <%= link_to "Events", events_path %>
           |
           <%= link_to "Trips", trips_path %>
         <% else %>
@@ -67,7 +63,6 @@
         markers = handler.addMarkers(<%=raw @markers.to_json %>);
         handler.bounds.extendWith(markers);
         handler.fitMapToBounds();
-        handler.getMap().setZoom(5);
       });
     </script>
 

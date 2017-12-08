@@ -42,13 +42,13 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.create(event_params)
-    @event.user_id = current_user.id
-    @event.end_time = @event.start_time + @event.duration.hours
-    current_user.events << @event
     if @event.save
+      @event.user_id = current_user.id
+      @event.end_time = @event.start_time + @event.duration.hours
+      current_user.events << @event
       redirect_to events_path
     else
-      redirect_to new_event_path, notice: @event.errors.full_messages.last
+      redirect_to new_event_path, notice: @event.errors.full_messages.each
     end
   end
 
