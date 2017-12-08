@@ -8,6 +8,12 @@ class TripsController < ApplicationController
 
   def show
     find_trip
+    @events =  @trip.events.all
+    @markers = Gmaps4rails.build_markers(@events) do |event, marker|
+      marker.lat event.latitude
+      marker.lng event.longitude
+      marker.infowindow event.description
+    end
   end
 
   def new
@@ -22,7 +28,7 @@ class TripsController < ApplicationController
     current_user
     @trip = Trip.new(trip_params)
     @trip.user_id = current_user.id
-    @trip.duration = @trip.end_time.localtime.strftime("%d").to_i - @trip.start_time.localtime.strftime("%d").to_i
+    @trip.duration = ((@trip.end_time - @trip.start_time) / 3600).round
     @trip.save
     if @trip.save
       redirect_to root_path
@@ -36,14 +42,22 @@ class TripsController < ApplicationController
       if trip_event_params[:event_ids]
         @event = Event.find(trip_event_params[:event_ids])
         if @event.start_time >= @trip.start_time
-          @trip.events << @event
-          @trip.save
-          redirect_to trip_path(@trip)
+          if @trip.events.pluck(@event.id).include?(@event.id)
+            flash[:notice] = 'This trip already includes this event.'
+            redirect_to trip_path(@trip)
+          else
+            @trip.events << @event
+            @trip.duration = ((@trip.end_time - @trip.start_time) / 3600).round
+            @trip.save
+            redirect_to trip_path(@trip)
+          end
         else
           flash[:notice] = 'This event does not fall within your trip duration!'
           redirect_to @trip
         end
       else @trip.update(trip_params)
+        @trip.duration = ((@trip.end_time - @trip.start_time) / 3600).round
+        @trip.save
         redirect_to @trip
       end
   end
@@ -53,6 +67,7 @@ class TripsController < ApplicationController
     for i in 0...@trip.events.length do
        if @trip.events[i].id == params[:eventid].to_i
          @trip.events.delete(@trip.events[i])
+         @trip.duration = ((@trip.end_time - @trip.start_time) / 3600).round
          @trip.save
          break
        end

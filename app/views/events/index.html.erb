@@ -1,4 +1,7 @@
-<div class="indent-box">
+<div class="show-grid">
+  
+ <div class="show-grid-1">
+  <div class="indent-box">
   <h1>All events</h1>
   <p>Sort by:
     <%= link_to "Cost", events_path(order: 'cost'), class: 'button' %>,
@@ -14,4 +17,17 @@
           <span>$<%= event.cost %></span>
           <br>
     <% end %>
+  </div>
+</div>
+
+
+  <div class="show-grid-2">
+    <div style='width: 600px;'>
+      <div id="map" style='width: 600px; height: 400px;'></div>
+    </div>
+  </div>
+
+  <script>
+    handler.getMap().setZoom(0);
+  </script>
 </div>
