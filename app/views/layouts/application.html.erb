@@ -22,8 +22,10 @@
   <div class="navlinks">
     <% if user_signed_in? %>
       <p>Logged in as:
+        <%= link_to "/users/show/#{current_user.id}" do %>
         <%= current_user.fname %>
         <%= current_user.lname %>
+        <% end %>
         <p>
 
           <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %>
@@ -65,7 +67,7 @@
         markers = handler.addMarkers(<%=raw @markers.to_json %>);
         handler.bounds.extendWith(markers);
         handler.fitMapToBounds();
-        handler.getMap().setZoom(15);
+        handler.getMap().setZoom(12);
       });
     </script>
 
