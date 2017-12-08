@@ -22,7 +22,7 @@
   <p><%= f.submit %></p>
   <% end %>
 <% else %>
-  <h2> Clone this Event for Yourself! </h2>
+  <h2> Clone this Event and add it to your Trip! </h2>
   <div class="form-wrapper">
   <div class='box two'>
   <%= form_with(model: Event.new, local: true) do |f| %>
@@ -46,6 +46,8 @@
     <% if current_user.trips.empty? %>
       <p>You have no trips to add this to! But I guess you can clone it for later. </p>
     <% else %>
+    <br>
+      <%= f.label "Choose Trip", class: 'form-label' %>
       <%= f.select :trip_ids, options_from_collection_for_select(current_user.trips.all, 'id', 'name') %>
       <%= f.hidden_field :event, :value => @event.id%>
     <% end %>
