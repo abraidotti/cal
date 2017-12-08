@@ -3,15 +3,13 @@
   <div class="show-grid-1">
     <div class='indent-box'>
       <h1>
-        Your Event:
         <%= @event.name %>
       </h1>
-      <%= @event.latitude %>
-      <%= @event.longitude %>
+      <h4>Created By:
+        <%= User.find(@event.user_id).fname %>
+        <%= User.find(@event.user_id).lname %></h4>
+        <p class="user-email"><%= User.find(@event.user_id).email %></p>
 
-      <h2>
-        Description:
-      </h2>
       <%= @event.description %>
       <br>
       <h2>
@@ -37,8 +35,6 @@
         Duration:
       </h2>
       <p><%= distance_of_time_in_words(@event.duration.hour) %></p>
-      <h2>Created By:</h2>
-      <p><%= User.find(@event.user_id).email %></p>
 
       <% if current_user.id == @event.user_id %>
         <%= link_to 'Edit Event', edit_event_path(@event) %>
@@ -64,10 +60,10 @@
   </div>
 </div>
 
-  <div class="show-grid-2">
-    <div style='width: 600px;'>
-      <div id="map" style='width: 600px; height: 400px;'></div>
-    </div>
+<div class="show-grid-2">
+  <div style='width: 600px;'>
+    <div id="map" style='width: 600px; height: 400px;'></div>
   </div>
+</div>
 
 </div>

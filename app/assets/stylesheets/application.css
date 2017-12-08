@@ -127,3 +127,7 @@ a:hover {
   display: grid;
   margin: 20px;
 }
+
+.user-email {
+  font-size: 14px;
+}

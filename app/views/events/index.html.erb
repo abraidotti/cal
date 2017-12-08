@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="indent-box">
   <h1>All events</h1>
   <button class="button" id="price">Sort By Price</button>
@@ -8,6 +9,30 @@
           <span><%= event.location %></span>
           <br>
     <% end %>
+=======
+<div class="show-grid">
+  <div class="show-grid-1">
+    <div class="indent-box">
+      <h1>All events</h1>
+      <% @events.each do |event| %>
+        <br>
+        <a href="/events/<%= event.id%>"><%= event.name %></a>
+        |
+        <span><%= event.location %></span>
+        <br>
+      <% end %>
+    </div>
+  </div>
+  <div class="show-grid-2">
+    <div style='width: 600px;'>
+      <div id="map" style='width: 600px; height: 400px;'></div>
+    </div>
+  </div>
+
+  <script>
+    handler.getMap().setZoom(0);
+  </script>
+>>>>>>> master
 </div>
 
 <% @prices = [];%>
