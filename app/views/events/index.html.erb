@@ -1,19 +1,9 @@
-<<<<<<< HEAD
-<div class="indent-box">
-  <h1>All events</h1>
-  <button class="button" id="price">Sort By Price</button>
-  <button class="button" id="location">Sort By Location</button>
-    <% @events.each do |event| %>
-          <br>
-          <a href="/events/<%= event.id%>"><%= event.name %></a> |
-          <span><%= event.location %></span>
-          <br>
-    <% end %>
-=======
 <div class="show-grid">
   <div class="show-grid-1">
     <div class="indent-box">
       <h1>All events</h1>
+      <button class="button" id="price">Sort By Price</button>
+      <button class="button" id="location">Sort By Location</button>
       <% @events.each do |event| %>
         <br>
         <a href="/events/<%= event.id%>"><%= event.name %></a>
@@ -32,36 +22,20 @@
   <script>
     handler.getMap().setZoom(0);
   </script>
->>>>>>> master
 </div>
 
 <% @prices = [];%>
-<% @events.each do |event|%>
-<% @prices.push(event.cost)%>
-<% end %>
-<% @locations = [];%>
-<% @events.each do |event|%>
-<% @locations.push(event.location)%>
-<% end %>
+  <% @events.each do |event|%>
+    <% @prices.push(event.cost)%><% end %>
+    <% @locations = [];%>
+      <% @events.each do |event|%>
+        <% @locations.push(event.location)%><% end %>
 
-<%=@prices%>
+        <%=@prices%>
 
-<%= javascript_tag do %>
-var button = document.getElementById('price');
+        <%= javascript_tag do %>
+        var button = document.getElementById('price'); var prices =
+        <%=@prices%>
 
-var prices = <%=@prices%>
-
-button.addEventListener('click', function(){
-  var sortedPrices = prices.sort(function(a,b){ return a-b})
-  console.log(sortedPrices);
-});
-
-var button2 = document.getElementById('location');
-
-var locations = "<%=@locations%>"
-
-button2.addEventListener('click', function(){
-  var sortedLocals = locations.sort(function(a,b){return a - b})
-  console.log(locations)
-})
-<% end %>
+        button.addEventListener('click', function(){ var sortedPrices = prices.sort(function(a,b){ return a-b}) console.log(sortedPrices); }); var button2 = document.getElementById('location'); var locations = "<%=@locations%>" button2.addEventListener('click', function(){ var sortedLocals = locations.sort(function(a,b){return a - b}) console.log(locations) })
+      <% end %>
