@@ -6,7 +6,7 @@
       <ul style="list-style: none;">
         <% @mytrips.each do |trip| %>
           <li>
-            <a href="/trips/<%= trip.id%>"><%= trip.name %></a>
+            <a href="/trips/<%= trip.id%>"><%= trip.name %></a>  | <%= trip.duration %>
           </li>
         <% end %>
       </ul>
@@ -17,7 +17,7 @@
     <ul style="list-style: none;">
       <% @alltrips.each do |trip| %>
         <li>
-          <a href="/trips/<%= trip.id%>"><%= trip.name %></a>
+          <a href="/trips/<%= trip.id%>"><%= trip.name %></a>  | <%= trip.description %>
         </li>
       <% end %>
     </ul>
