@@ -1,4 +1,4 @@
-<div class="show-grid"> 
+<div class="show-grid">
  <div class="show-grid-1">
   <div class="indent-box">
   <h1>All events</h1>
@@ -22,7 +22,30 @@
   <div class="show-grid-2">
     <div style='width: 600px;'>
       <div id="map" style='width: 600px; height: 400px;'></div>
+      <h1>Add an Event</h1>
+
+      <%= form_with(model: Event.new, local:true) do |f| %>
+      <br>
+      <%= f.label "Name: ", class: 'form-label' %>
+      <%= f.text_field :name %>
+      <br>
+      <%= f.label "Description: ", class: 'form-label' %>
+      <%= f.text_field :description %>
+      <br>
+      <%= f.label "Location: ", class: 'form-label' %>
+      <%= f.text_field :location %>
+      <br>
+      <%= f.label "Start time", class: 'form-label' %>
+      <%= f.datetime_select :start_time, :default => Time.now, ampm: true %>
+      <br>
+      <%= f.label "Duration", class: 'form-label' %>
+      <span><%= f.select :duration, (1..10) %> hours</span>
+      <%= f.label "Cost", class: 'form-label' %>
+      <span>$<%= f.number_field(:cost, in: 1..50, step: 5) %></span>
+      <p><%= f.submit %></p>
+      <% end %>
     </div>
+
   </div>
 
   <script>
