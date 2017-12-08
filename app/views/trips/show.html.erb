@@ -6,7 +6,7 @@
       <br>
       <p>This trip begins on <%= @trip.start_time.localtime.strftime("%B %d, %Y %I:%M %p") %></p>
       <p>and it ends on <%= @trip.end_time.localtime.strftime("%B %d, %Y %I:%M %p") %></p>
-      <p>Total duration: <%= distance_of_time_in_words(@trip.duration) %></p>
+      <p>Total duration: <%= distance_of_time_in_words(@trip.duration.hour) %></p>
       <br>
 
         <% if @trip.events.empty? %>
@@ -17,7 +17,7 @@
           <h4><a href="/events/<%=event.id%>"><%=event.name%></a></h4>
           <p>Description: <%= event.description %></p>
           <p>Start time: <%= event.start_time.localtime.strftime("%B %d, %Y %I:%M %p") %></p>
-          <p>Duration: <%= distance_of_time_in_words(event.duration.hours) %></p>
+          <p>Duration: <%= distance_of_time_in_words(event.duration.hour) %></p>
         <% if @trip.user_id == current_user.id %>
           <%= link_to 'remove this event', "/trips/#{@trip.id}?eventid=#{event.id}", method: :post %>
         <% end %>
