@@ -6,7 +6,7 @@
       <ul style="list-style: none;">
         <% @mytrips.each do |trip| %>
           <li>
-            <a href="/trips/<%= trip.id%>"><%= trip.name %></a>  | Duration: <%= trip.duration %> hours
+            <a href="/trips/<%= trip.id%>"><%= trip.name %></a>  | Duration: <%= distance_of_time_in_words(trip.duration.hour) %>
           </li>
         <% end %>
       </ul>
