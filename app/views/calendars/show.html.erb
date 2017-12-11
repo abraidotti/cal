@@ -2,7 +2,7 @@
 <div class="indent-box">
   <% @trips.each do |trip| %>
     <% trip.events.each do |event| %>
-      <% if @date.gsub(/\D+/, '').between?(event.start_time.to_date.to_s.gsub(/\D+/, ''),event.end_time.to_date.to_s.gsub(/\D+/, '')) %>
+      <p><% if event.start_time.to_date.to_s == @date.to_s %></p>
         <p><%= link_to event.name, event_path(event) %>: <%= event.description %></p>
         <br>
       <% end %>
