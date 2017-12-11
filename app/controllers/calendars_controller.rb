@@ -8,6 +8,6 @@ class CalendarsController < ApplicationController
 
   def show
     @date = params[:format]
-    @events = current_user.events.all
+    @trips = current_user.trips.all
   end
 end
