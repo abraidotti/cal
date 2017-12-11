@@ -18,7 +18,7 @@
 <%= f.label "Duration", class: 'form-label' %>
 <span><%= f.select :duration, (1..10) %> hours</span>
 <%= f.label "Cost", class: 'form-label' %>
-<span>$<%= f.number_field(:cost, in: 1..50, step: 5) %></span>
+<span>$<%= f.number_field :cost %></span>
 <p><%= f.submit %></p>
 <% end %>
 </div>
