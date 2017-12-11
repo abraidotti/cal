@@ -2,6 +2,21 @@
 
 Welcome to your new favorite trip planner!
 
+## SETUP
+
+```git clone https://github.com/abraidotti/cal.git```
+
+```cd cal```
+
+```bundle install```
+
+```rails db:migrate```
+
+and optionally:
+```rails db:seed```
+
+then navigate to http://localhost:3000
+
 ## USAGE
 
 Follow these steps to have the most fun:
@@ -36,6 +51,6 @@ Another way:
 4. On this page, you can clone everything about the event, but you must choose a new start time and which event you'd like to add it to
 5. Please mind that if you choose a new start time that does not fall within one of your trip durations, it still won't work when you hit "Clone me"!
 
-Finally, if you'd like to view your calendar click on "Calendar" in the navigation, the highlighted days represent days of trips you have created. If you click on a highlighted day, it will show you all the events planned for that day! 
+Finally, if you'd like to view your calendar click on "Calendar" in the navigation, the highlighted days represent days of trips you have created. If you click on a highlighted day, it will show you all the events planned for that day!
 
 Plan away :)
