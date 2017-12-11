@@ -9,13 +9,13 @@ require 'faker'
 
 test_user = User.create(
   email: "test@test.com",
-  fname: "Testy",
-  lname: "Testaverde",
+  fname: "NYCDA",
+  lname: "Student",
   password: "123456"
 )
 test_user.events << Event.create(
-  name: Faker::Food.metric_measurement,
-  description: Faker::Coffee.notes,
+  name: "Weekend in Philadelphia",
+  description: "A fun weekend in America's best city",
   location: "824 Morris St, Philadelphia, PA",
   start_time: Time.now + 1.hours,
   end_time: Time.now + 3.hours,
@@ -34,7 +34,7 @@ test_user.trips << Trip.create(
   user_id: test_user.id
 )
 test_user.trips.last.events << Event.create(
-  name: Faker::Coffee.blend_name,
+  name: "Get a cheesesteak",
   description: Faker::Hipster.sentence(3, true),
   location: "1502 South Broad St, Philadelphia, PA",
   start_time: Time.now + 1.hours,
@@ -53,7 +53,7 @@ test_user.trips.last.events << Event.create(
   )
   3.times do
     user.events << Event.create(
-      name: Faker::Coffee.blend_name,
+      name: "Philadelphia's " + Faker::Coffee.blend_name,
       description: Faker::Coffee.notes,
       location: "2314 East Harold St, Philadelphia, PA",
       start_time: Time.now + 1.hours,
@@ -65,7 +65,7 @@ test_user.trips.last.events << Event.create(
   end
   3.times do
     user.trips << Trip.create(
-      name: Faker::Coffee.blend_name,
+      name: user.fname + "'s excellent Philly adventure",
       description: Faker::RickAndMorty.quote,
       location: "145 Emily St, Philadelphia, PA",
       start_time: Time.now,
@@ -77,7 +77,7 @@ test_user.trips.last.events << Event.create(
   end
   3.times do
     user.trips.last.events << Event.create(
-      name: Faker::Space.planet,
+      name: "Event in Philly number " + Event.all.length.to_s,
       description: Faker::Coffee.notes,
       location: "1600 East Cherry St, Philadelphia, PA",
       start_time: Time.now + 1.hours,
