@@ -3,12 +3,8 @@
   <% @events.each do |event| %>
     <% if @date.gsub(/\D+/, '').between?(event.start_time.to_date.to_s.gsub(/\D+/, ''),event.end_time.to_date.to_s.gsub(/\D+/, '')) %>
       <p><%= link_to event.name, event_path(event) %>: <%= event.description %></p>
-      <%= event.start_time.to_date.to_s%>
-      <%= event.end_time.to_date.to_s%>
-    <% else %>
       <br>
-      <%= link_to "Add An Event", new_event_path %>
-      <% break %>
     <% end %>
   <% end %>
+  <%= link_to "Add An Event", new_event_path %>
 </div>
