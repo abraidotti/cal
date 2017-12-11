@@ -24,6 +24,7 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find_by_id(params[:id])
+    @event.end_time = @event.start_time + @event.duration.hours
     @trip = Trip.find_by_id(params[:id])
     @markers = Gmaps4rails.build_markers(@event) do |event, marker|
       marker.lat event.latitude
@@ -44,7 +45,6 @@ class EventsController < ApplicationController
     @event = Event.create(event_params)
     if @event.save
       @event.user_id = current_user.id
-      @event.end_time = @event.start_time + @event.duration.hours
       current_user.events << @event
       redirect_to events_path
     else
@@ -57,6 +57,7 @@ class EventsController < ApplicationController
     @trip = Trip.find_by_id(event_trip_params[:trip_ids])
     if event_params[:name]
       if @event.update(event_params)
+        @event.end_time = @event.start_time + @event.duration.hours
         redirect_to event_path(@event)
       else
         render 'edit'
