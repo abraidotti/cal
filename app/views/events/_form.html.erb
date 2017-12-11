@@ -34,7 +34,7 @@
   <%= f.text_field :description, value: @event.description %>
   <br>
   <%= f.label "Location: ", class: 'form-label' %>
-  <%= f.text_field :location %>
+  <%= f.text_field :location, value: @event.location %>
   <br>
   <%= f.label "Start time", class: 'form-label' %>
   <%= f.datetime_select :start_time %>
@@ -42,7 +42,7 @@
   <%= f.label "Duration", class: 'form-label' %>
   <span><%= f.select :duration, (1..10) %> hours</span>
   <%= f.label "Cost", class: 'form-label' %>
-  <span>$<%= f.number_field :cost %></span>
+  <span>$<%= f.number_field :cost, value: @event.cost %></span>
     <% if current_user.trips.empty? %>
       <p>You have no trips to add this to! But I guess you can clone it for later. </p>
     <% else %>
