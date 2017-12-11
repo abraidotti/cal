@@ -1,10 +1,14 @@
 <h1>Today's Trip events</h1>
-
+<div class="indent-box">
   <% @events.each do |event| %>
     <% if @date.gsub(/\D+/, '').between?(event.start_time.to_date.to_s.gsub(/\D+/, ''),event.end_time.to_date.to_s.gsub(/\D+/, '')) %>
       <p><%= link_to event.name, event_path(event) %>: <%= event.description %></p>
+      <%= event.start_time.to_date.to_s%>
+      <%= event.end_time.to_date.to_s%>
     <% else %>
-      <%= link_to "No events today! How about we add one?", new_event_path %>
+      <br>
+      <%= link_to "Add An Event", new_event_path %>
       <% break %>
     <% end %>
   <% end %>
+</div>

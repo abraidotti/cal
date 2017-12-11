@@ -16,3 +16,7 @@ module Cal
 
   end
 end
+
+class Application < Rails::Application
+  config.time_zone = 'Eastern Time (US & Canada)'
+end
