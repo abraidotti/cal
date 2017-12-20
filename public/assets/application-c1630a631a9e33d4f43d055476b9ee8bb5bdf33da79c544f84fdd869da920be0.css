@@ -1,0 +1,151 @@
+/*
+Color Palette:
+
+light blue: #77C9D4
+light green: #57BC90
+dark green: #015249
+light gray: #D5D5D5
+gray: #A5A5AF
+
+
+*/
+
+
+select {
+  color: #015249;
+  height: 20px;
+  font-size: 15px;
+}
+
+input {
+  color: #015249;
+  height: 20px;
+  font-size: 15px;
+}
+
+button {
+  color: #015249;
+  height: 20px;
+  font-size: 15px;
+}
+
+* {
+  font-family: 'Open Sans Condensed', sans-serif;
+  margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+html {
+  background: url("bg_map.png") no-repeat center center fixed;
+  background-size: cover;
+}
+
+a {
+  text-decoration: none;
+  color: #015249;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.navbar {
+  padding: 5px;
+  display: grid;
+  grid-template-columns: 0fr 1fr;
+  width: 100vw;
+}
+
+.navlinks {
+  padding: 5px;
+}
+
+.simple-calendar {
+  display: grid;
+  margin: auto;
+}
+
+.calendar-heading {
+  font-size: 20px;
+  margin: auto;
+}
+
+.cal-day {
+  display: inline-block;
+  height: 100px;
+  width: 100px;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+  margin: 0 auto;
+  transition: background-color 1s;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 90px;
+  font-size: 50px;
+  color: #A5A5AF;
+}
+
+.cal-day:hover {
+  background-color: #77C9D4;
+}
+
+.table {
+  background-color: white;
+  font-size: 20px;
+  margin: auto;
+}
+
+.current-day {
+  border: 1px solid #015249;
+}
+
+.has_trips {
+  background-color: #57BC90;
+}
+
+.cal-grid {
+  display: grid;
+}
+
+.form-label {
+  display: grid;
+  grid-template-rows: 1fr;
+}
+
+.grid-login {
+  display: grid;
+  grid-template-rows: 1fr 2fr 1fr;
+}
+
+.not-current-month{
+  background-color: #A5A5AF;
+}
+
+.indent-box {
+  margin: 20px;
+  font-size: 1.2em;
+}
+
+.form-wrapper{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.show-grid {
+  display: grid;
+  grid-template-columns: 400px 600px;
+}
+
+.show-grid-1 {
+  display: grid;
+}
+
+.show-grid-2 {
+  display: grid;
+  margin: 20px;
+}
+
+.user-email {
+  font-size: 14px;
+}
