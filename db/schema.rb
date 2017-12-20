@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 20171206162038) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "calendars", force: :cascade do |t|
     t.integer "user_id"
     t.datetime "created_at", null: false
@@ -35,15 +38,15 @@ ActiveRecord::Schema.define(version: 20171206162038) do
   end
 
   create_table "events_trips", force: :cascade do |t|
-    t.integer "event_id"
-    t.integer "trip_id"
+    t.bigint "event_id"
+    t.bigint "trip_id"
     t.index ["event_id"], name: "index_events_trips_on_event_id"
     t.index ["trip_id"], name: "index_events_trips_on_trip_id"
   end
 
   create_table "events_users", force: :cascade do |t|
-    t.integer "event_id"
-    t.integer "user_id"
+    t.bigint "event_id"
+    t.bigint "user_id"
     t.index ["event_id"], name: "index_events_users_on_event_id"
     t.index ["user_id"], name: "index_events_users_on_user_id"
   end
