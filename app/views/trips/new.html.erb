@@ -1,4 +1,6 @@
-<div class="indent-box">
+<div class="container">
+  <div class="row">
+    <div class="one-half column" style="margin-top: 5%">
 <h1>Add a Trip</h1>
 
 <%= form_with(model: Trip.new, local:true) do |f| %>
@@ -17,4 +19,6 @@
 <br>
 <%= f.submit %>
 <% end %>
+</div>
+</div>
 </div>
