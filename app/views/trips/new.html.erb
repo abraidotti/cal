@@ -1,24 +1,24 @@
 <div class="container">
   <div class="row">
     <div class="one-half column" style="margin-top: 5%">
-<h1>Add a Trip</h1>
+      <h1>Add a Trip</h1>
 
-<%= form_with(model: Trip.new, local:true) do |f| %>
-<br>
-<%= f.label "Name: ", class: 'form-label' %>
-<%= f.text_field :name %>
-<br>
-<%= f.label "Description: ", class: 'form-label' %>
-<%= f.text_field :description %>
-<br>
-<%= f.label "Start time", class: 'form-label' %>
-<%= f.datetime_select :start_time, :default => Time.now, ampm: true %>
-<br>
-<%= f.label "End time", class: 'form-label' %>
-<%= f.datetime_select :end_time, :default => Time.now, ampm: true %>
-<br>
-<%= f.submit %>
-<% end %>
-</div>
+      <%= form_with(model: Trip.new, local:true) do |f| %>
+      <br>
+      <%= f.label "Name: ", class: 'form-label' %>
+      <%= f.text_field :name %>
+      <br>
+      <%= f.label "Description: ", class: 'form-label' %>
+      <%= f.text_field :description %>
+      <br>
+      <%= f.label "Start time", class: 'form-label' %>
+      <%= f.datetime_select :start_time, :default => Time.now, ampm: true %>
+      <br>
+      <%= f.label "End time", class: 'form-label' %>
+      <%= f.datetime_select :end_time, :default => Time.now, ampm: true %>
+      <br>
+      <%= f.submit %>
+    <% end %>
+  </div>
 </div>
 </div>
