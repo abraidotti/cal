@@ -18,7 +18,7 @@
   <nav class="navbar">
     <div>
       <%= link_to calendars_index_path do %>
-      <%= image_tag "logo_small_black.png" %>
+      <%= image_tag "logo_black.png", size: "265x50" %>
     <% end %>
   </div>
 
@@ -29,7 +29,9 @@
           <%= current_user.fname %>
           <%= current_user.lname %>
         <% end %>
-      </span> |
+      </span>
+
+      <br>
 
     <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %>
     |
