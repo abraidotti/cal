@@ -34,7 +34,8 @@
   max-width: 960px;
   margin: 0 auto;
   padding: 0 20px;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  background-color: transparent; }
 .column,
 .columns {
   width: 100%;
@@ -132,7 +133,7 @@ body {
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 h1, h2, h3, h4, h5, h6 {
   margin-top: 0;
-  margin-bottom: 2rem;
+  margin-bottom: 0rem;
   font-weight: 300; }
 h1 { font-size: 4.0rem; line-height: 1.2;  letter-spacing: -.1rem;}
 h2 { font-size: 3.6rem; line-height: 1.25; letter-spacing: -.1rem; }
@@ -255,8 +256,8 @@ textarea {
           appearance: none; }
 textarea {
   min-height: 65px;
-  padding-top: 6px;
-  padding-bottom: 6px; }
+  padding-top: 0px;
+  padding-bottom: 0px; }
 input[type="email"]:focus,
 input[type="number"]:focus,
 input[type="search"]:focus,
@@ -281,7 +282,7 @@ input[type="radio"] {
   display: inline; }
 label > .label-body {
   display: inline-block;
-  margin-left: .5rem;
+  margin-left: 0.5rem;
   font-weight: normal; }
 
 
@@ -344,7 +345,7 @@ input,
 textarea,
 select,
 fieldset {
-  margin-bottom: 1.5rem; }
+  margin-bottom: 0.5rem; }
 pre,
 blockquote,
 dl,
@@ -354,7 +355,7 @@ p,
 ul,
 ol,
 form {
-  margin-bottom: 2.5rem; }
+  margin-bottom: 0rem; }
 
 
 /* Utilities

@@ -42,7 +42,7 @@
   <%= f.label "Duration", class: 'form-label' %>
   <span><%= f.select :duration, (1..10) %> hours</span>
   <%= f.label "Cost", class: 'form-label' %>
-  <span>$<%= f.number_field :cost, value: @event.cost %></span>
+  <span><%= f.number_field :cost, value: "$0.00" @event.cost %></span>
     <% if current_user.trips.empty? %>
       <p>You have no trips to add this to! But I guess you can clone it for later. </p>
     <% else %>

@@ -1,18 +1,31 @@
-<h1>Users#show</h1>
-<h1> User: <%= @user.fname %> <%= @user.lname %>  </h1>
-<h2> <%= @user.fname %>'s events: </h2>
-<ul style="list-style: none;">
-  <% @user.events.each do |event| %>
-      <li>
-        <a href="/events/<%= event.id%>"><%= event.name %></a>
-      </li>
-  <% end %>
-</ul>
-<h2> <%= @user.fname %>'s trips: </h2>
-<ul style="list-style: none;">
-  <% @user.trips.each do |trip| %>
-      <li>
-        <a href="/trips/<%= trip.id%>"><%= trip.name %></a>
-      </li>
-  <% end %>
-</ul>
+<div class="container">
+  <div class="row">
+    <div class="one-half column" style="margin-top: 1%">
+      <h3>
+        User:
+        <%= @user.fname %>
+        <%= @user.lname %>
+      </h3>
+      <h4>
+        <%= @user.fname %>'s Events:
+      </h4>
+      <ul style="list-style: none;">
+        <% @user.events.each do |event| %>
+          <li>
+            <a href="/events/<%= event.id%>"><%= event.name %></a>
+          </li>
+        <% end %>
+      </ul>
+      <h4>
+        <%= @user.fname %>'s Trips:
+      </h4>
+      <ul style="list-style: none;">
+        <% @user.trips.each do |trip| %>
+          <li>
+            <a href="/trips/<%= trip.id%>"><%= trip.name %></a>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
