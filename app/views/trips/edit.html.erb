@@ -1,4 +1,6 @@
-<div class="indent-box">
+<div class="container">
+  <div class="row">
+    <div class="one-half column" style="margin-top: 1%">
   <h1>Edit a Trip</h1>
 
   <% if current_user.id == @trip.user_id %>
@@ -19,4 +21,6 @@
     <%= f.submit %>
   <% end %>
 <% end %>
+</div>
+</div>
 </div>

@@ -1,24 +1,29 @@
-<div class="indent-box">
-<h1>Add an Event</h1>
+<div class="container">
+  <div class="row">
+    <div class="one-half column" style="margin-top: 1%">
+      <h3>Add an Event</h3>
 
-<%= form_with(model: Event.new, local:true) do |f| %>
-<br>
-<%= f.label "Name: ", class: 'form-label' %>
-<%= f.text_field :name %>
-<br>
-<%= f.label "Description: ", class: 'form-label' %>
-<%= f.text_field :description %>
-<br>
-<%= f.label "Location: ", class: 'form-label' %>
-<%= f.text_field :location %>
-<br>
-<%= f.label "Start time", class: 'form-label' %>
-<%= f.datetime_select :start_time, :default => Time.now, ampm: true %>
-<br>
-<%= f.label "Duration", class: 'form-label' %>
-<span><%= f.select :duration, (1..10) %> hours</span>
-<%= f.label "Cost", class: 'form-label' %>
-<span>$<%= f.number_field :cost %></span>
-<p><%= f.submit %></p>
-<% end %>
+      <%= form_with(model: Event.new, local:true) do |f| %>
+      <br>
+      <%= f.label "Name: ", class: 'form-label' %>
+      <%= f.text_field :name %>
+      <br>
+      <%= f.label "Description: ", class: 'form-label' %>
+      <%= f.text_field :description %>
+      <br>
+      <%= f.label "Location: ", class: 'form-label' %>
+      <%= f.text_field :location %>
+      <br>
+      <%= f.label "Start time", class: 'form-label' %>
+      <%= f.datetime_select :start_time, :default => Time.now, ampm: true %>
+      <br>
+      <%= f.label "Duration", class: 'form-label' %>
+      <span><%= f.select :duration, (1..10) %>
+        hours</span>
+      <%= f.label "Cost", class: 'form-label' %>
+      <span>$<%= f.number_field :cost %></span>
+      <p><%= f.submit %></p>
+    <% end %>
+  </div>
+</div>
 </div>

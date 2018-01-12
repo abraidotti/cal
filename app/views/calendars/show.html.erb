@@ -1,12 +1,20 @@
-<h1>Today's Trip events</h1>
-<div class="indent-box">
-  <% @trips.each do |trip| %>
-    <% trip.events.each do |event| %>
-      <p><% if event.start_time.to_date.to_s == @date.to_s %></p>
-        <p><%= link_to event.name, event_path(event) %>: <%= event.description %></p>
-        <br>
+<div class="container">
+  <div class="row">
+    <div class="one-half column" style="margin-top: 1%">
+
+      <h3>Today's Trip events</h3>
+      <% @trips.each do |trip| %>
+        <% trip.events.each do |event| %>
+          <p>
+            <% if event.start_time.to_date.to_s == @date.to_s %>
+            </p>
+            <p><%= link_to event.name, event_path(event) %>:
+              <%= event.description %></p>
+            <br>
+          <% end %>
+        <% end %>
       <% end %>
-    <% end %>
-  <% end %>
-  <%= link_to "Add An Event", new_event_path %>
+      <%= link_to "Add An Event", new_event_path %>
+    </div>
+  </div>
 </div>

@@ -1,33 +1,45 @@
-<div class="show-grid">
-  <div class="show-grid-1">
-    <div class='indent-box'>
+<div class="container">
+  <div class="row">
+    <div class="one-half column" style="margin-top: 1%">
       <h1><%= @trip.name %></h1>
-      <h3><i><%= @trip.description.capitalize %></i></h3>
+      <h3>
+        <i><%= @trip.description.capitalize %></i>
+      </h3>
       <br>
-      <p>This trip begins on <%= @trip.start_time.localtime.strftime("%B %d, %Y %I:%M %p") %></p>
-      <p>and it ends on <%= @trip.end_time.localtime.strftime("%B %d, %Y %I:%M %p") %></p>
-      <p>Total duration: <%= distance_of_time_in_words(@trip.duration.hour) %></p>
+      <p>This trip begins on
+        <%= @trip.start_time.localtime.strftime("%B %d, %Y %I:%M %p") %></p>
+      <p>and it ends on
+        <%= @trip.end_time.localtime.strftime("%B %d, %Y %I:%M %p") %></p>
+      <p>Total duration:
+        <%= distance_of_time_in_words(@trip.duration.hour) %></p>
       <br>
 
-        <% if @trip.events.empty? %>
-          <p>You don't have any events assigned to this trip yet!</p>
-        <% else %>
-        <h4>There are currently <%= @trip.events.count %> assigned events:</h4>
-          <% @trip.events.each do |event| %>
-          <h4><a href="/events/<%=event.id%>"><%=event.name%></a></h4>
-          <p>Description: <%= event.description %></p>
-          <p>Start time: <%= event.start_time.localtime.strftime("%B %d, %Y %I:%M %p") %></p>
-          <p>Duration: <%= distance_of_time_in_words(event.duration.hour) %></p>
-        <% if @trip.user_id == current_user.id %>
-          <%= link_to 'remove this event', "/trips/#{@trip.id}?eventid=#{event.id}", method: :post %>
+      <% if @trip.events.empty? %>
+        <p>You don't have any events assigned to this trip yet!</p>
+      <% else %>
+        <h4>There are currently
+          <%= @trip.events.count %>
+          assigned events:</h4>
+        <% @trip.events.each do |event| %>
+          <h4>
+            <a href="/events/<%=event.id%>"><%=event.name%></a>
+          </h4>
+          <p>Description:
+            <%= event.description %></p>
+          <p>Start time:
+            <%= event.start_time.localtime.strftime("%B %d, %Y %I:%M %p") %></p>
+          <p>Duration:
+            <%= distance_of_time_in_words(event.duration.hour) %></p>
+          <% if @trip.user_id == current_user.id %>
+            <%= link_to 'remove this event', "/trips/#{@trip.id}?eventid=#{event.id}", method: :post %>
+          <% end %>
+          <br>
         <% end %>
-        <br>
       <% end %>
-    <% end %>
-    <br>
-    <% if @trip.user_id == current_user.id %>
-      <h3>Add an event to your trip:</h3>
-      <%= form_with(model: @trip, local: true) do |f| %>
+      <br>
+      <% if @trip.user_id == current_user.id %>
+        <h3>Add an event to your trip:</h3>
+        <%= form_with(model: @trip, local: true) do |f| %>
         <%= f.select :event_ids, options_from_collection_for_select(current_user.events.all, 'id', 'name') %>
         <%= f.submit "Assign"%>
       <% end %>
@@ -39,13 +51,12 @@
     <% end %>
   </div>
 
-</div>
-<% if !@trip.events.empty? %>
-  <div class="show-grid-2">
-    <div style='width: 600px;'>
-      <div id="map" style='width: 600px; height: 400px;'></div>
+  <% if !@trip.events.empty? %>
+    <div class="one-half column" style="margin-top: 1%">
+      <div id="map" style='width: 320px; height: 320px;'></div>
     </div>
   </div>
 <% end %>
-
+</div>
+</div>
 </div>

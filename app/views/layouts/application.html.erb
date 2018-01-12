@@ -4,7 +4,9 @@
     <title>Trippin</title>
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
+    <%= stylesheet_link_tag "normalize.css" %>
+    <%= stylesheet_link_tag "skeleton.css" %>
+    <!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet"> -->
 
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag "https://maps.google.com/maps/api/js?v=3&key=#{ENV['GOOGLEMAPS_API_KEY']}" %>
@@ -16,54 +18,58 @@
   <nav class="navbar">
     <div>
       <%= link_to calendars_index_path do %>
-      <%= image_tag "logo_small_black.png" %>
+      <%= image_tag "logo_black.png", size: "265x50" %>
     <% end %>
   </div>
+
   <div class="navlinks">
     <% if user_signed_in? %>
-      <p>Logged in as:
+      <span>Logged in as:
         <%= link_to "/users/show/#{current_user.id}" do %>
-        <%= current_user.fname %>
-        <%= current_user.lname %>
+          <%= current_user.fname %>
+          <%= current_user.lname %>
         <% end %>
-        <p>
+      </span>
 
-          <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %>
-          |
-          <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link' %>
-          |
-          <%= link_to "Calendar", "/" %>
-          |
-          <%= link_to "Events", events_path %>
-          |
-          <%= link_to "Trips", trips_path %>
-        <% else %>
-          <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link' %>
-          |
-          <%= link_to "Login", new_user_session_path, :class => 'navbar-link' %>
-        </div>
+      <br>
 
-      <% end %>
-    </nav>
+    <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %>
+    |
+    <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link' %>
+    |
+    <%= link_to "Calendar", "/" %>
+    |
+    <%= link_to "Events", events_path %>
+    |
+    <%= link_to "Trips", trips_path %>
+  <% else %>
+    <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link' %>
+    |
+    <%= link_to "Login", new_user_session_path, :class => 'navbar-link' %>
+  <% end %>
+  </div>
 
-    <body>
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
 
-      <%= yield %>
-    </body>
-    <script type="text/javascript">
-      handler = Gmaps.build('Google');
-      handler.buildMap({
-        provider: {},
-        internal: {
-          id: 'map'
-        }
-      }, function () {
-        markers = handler.addMarkers(<%=raw @markers.to_json %>);
-        handler.bounds.extendWith(markers);
-        handler.fitMapToBounds();
-      });
-    </script>
+</nav>
 
-  </html>
+<body>
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+
+<%= yield %>
+</body>
+<script type="text/javascript">
+handler = Gmaps.build('Google');
+handler.buildMap({
+  provider: {},
+  internal: {
+    id: 'map'
+  }
+}, function () {
+  markers = handler.addMarkers(<%=raw @markers.to_json %>);
+  handler.bounds.extendWith(markers);
+  handler.fitMapToBounds();
+});
+</script>
+
+</html>
